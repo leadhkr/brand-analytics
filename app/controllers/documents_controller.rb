@@ -13,7 +13,7 @@ class DocumentsController < ApplicationController
 	end
 
 	def show
-		render plain: @document.text
+		@document.analyze_text
 	end
 
 	private
