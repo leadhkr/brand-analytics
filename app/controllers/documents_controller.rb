@@ -1,20 +1,24 @@
 class DocumentsController < ApplicationController
+	before_action :find_document, except: [:new, :create]
+
 	def new
 		@document = Document.new
 	end
 
 	def create
-		@document = Document.create(document_params)
+		file = params[:document][:text].tempfile
+		text = File.open(file).read
+		@document = Document.create(text: text)
 		redirect_to @document
 	end
 
 	def show
-		
+		@document.analyze_text
 	end
 
 	private
 
-	def document_params
-		params.require(:document).permit(:text)
+	def find_document
+		@document = Document.find(params[:id])
 	end
 end
