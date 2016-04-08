@@ -8,12 +8,14 @@ class DocumentsController < ApplicationController
 	end
 
 	def create
-		keyword = params[:document][:keyword][:name]
-		file = params[:document][:text].tempfile
-		text = File.open(file).read
-
-		@document = Document.create(text: text, keywords: keyword)
-		binding.pry
+		file = params[:document][:text]
+		if Parser.validate_filetype(file)
+			text = File.open(file.tempfile).read
+			@document = Document.create(text: text)
+		else
+			flash[:error] = "Please upload a valid filetype"
+			redirect_to new_document_path
+		end
 		# redirect_to @document
 	end
 

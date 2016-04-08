@@ -17,7 +17,7 @@ class Document < ActiveRecord::Base
   validates :text, presence: true
 
   accepts_nested_attributes_for :keywords
-# validates :text, format: { with: /.txt\z/ }
+
 
   def analyze_text
     # Regex Text

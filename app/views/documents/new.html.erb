@@ -1,3 +1,6 @@
+<div>
+	<%=flash[:error]%>
+</div>
 <%=form_for @document do |f| %>
 	<!-- <%= f.text_area :text %> -->
 	<%= f.file_field :text %>
