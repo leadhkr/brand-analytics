@@ -1,11 +1,12 @@
 require 'spec_helper'
 
-describe Document do 
+describe Document do
 	let! (:document) {Document.create(text: "Whatever")}
 
 
-	it "has text" do
-		expect(document.text).to eq("Whatever")
+	it "has many keywords" do
+		document.keywords.build(name: "to")
+		expect(document.keywords.count).to eq(1)
 	end
 
 	it "is invalid without text" do
@@ -13,5 +14,5 @@ describe Document do
 		expect(doc).to be_invalid
 	end
 
-	
+
 end
