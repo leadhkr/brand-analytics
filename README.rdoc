@@ -1,28 +1,13 @@
-== README
+# Welcome to Brand Analytics
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Brand Analytics is a web application built in the Ruby programming language using the Rails framework. Brand Analytics uses the following technologies: (1) Ruby, (2) Rails, (3) JavaScript, (4) jQuery, (5) underscore.js, and (6) Twitter API. Brand Analytics is an app that allows users to analyze a body of text, either through uploaded textual data or JSON responses from the Twitter API, for analyzing the general sentiment of the text.
 
-Things you may want to cover:
+## Authors
 
-* Ruby version
+* Sagar Patel: [LinkedIn](https://www.linkedin.com/in/patelsagar) | [GitHub](https://github.com/sagarpatel8384)
+* Leah Einhorn: [LinkedIn](https://www.linkedin.com/in/) | [GitHub](https://github.com/itsatype)
+* Mindy Yuan: [LinkedIn](https://www.linkedin.com/in/mindy-yuan-53218044) | [GitHub](https://github.com/mindyyuan)
 
-* System dependencies
+## License
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Brand Analytics App is MIT Licensed. See LICENSE for details.
