@@ -16,8 +16,8 @@ describe Keyword do
 
 	it "has many documents through document_keywords" do
 		keyword.documents.build(text: 'whatever')
-
-		expect(keyword.documents.count)to eq(1)
+		keyword.save
+		expect(keyword.documents.count).to eq(1)
 	end
 	
 end

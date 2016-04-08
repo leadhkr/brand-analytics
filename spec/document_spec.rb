@@ -12,4 +12,6 @@ describe Document do
 		doc = Document.create
 		expect(doc).to be_invalid
 	end
+
+	
 end
