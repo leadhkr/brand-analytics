@@ -15,6 +15,8 @@ class Document < ActiveRecord::Base
   has_many :keywords, through: :document_keywords
 
   validates :text, presence: true
+
+  accepts_nested_attributes_for :keywords
 # validates :text, format: { with: /.txt\z/ }
 
   def analyze_text
@@ -31,7 +33,7 @@ class Document < ActiveRecord::Base
 
   def count_words(text_array)
     text_array.each_with_object(Hash.new(0)) do |word, word_count_hash|
-      
+
 
 
 
