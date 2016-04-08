@@ -1,0 +1,25 @@
+<%= form_for @group do |f| %>
+	<div>
+		<%= f.text_field :name, placeholder: "Group Name" %>
+	</div>
+	<div>
+		<%= f.text_field :street_address, placeholder: "Street Address" %>
+	</div>
+	<div>
+		<%= f.text_field :city, placeholder: "City" %>
+	</div>
+	<div>
+		<%= f.text_field :state, placeholder: "State" %>
+	</div>
+	<div>
+		<%= f.text_field :zip_code, placeholder: "ZIP Code" %>
+	</div>	
+	<div>
+		<%= f.text_field :domain, placeholder: "@flatironschool.com" %>
+	</div>	
+	<div>
+		<%= f.submit %>
+	</div>
+
+
+<% end%>

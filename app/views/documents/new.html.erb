@@ -1,7 +1,7 @@
 <h1>Upload Document</h1>
 <div><%=flash[:error]%></div>
 
-<%=form_for @document do |f| %>
+<%=form_for [@group, @document] do |f| %>
 	<p>
 		<%= f.label :title, 'Document Title' %></br>
 		<%= f.text_field :title, placeholder: 'Title' %>

@@ -1,5 +1,6 @@
 class DocumentsController < ApplicationController
 	before_action :find_document, except: [:new, :create]
+	before_action :find_group, only: [:new, :show, :create]
 
 	def new
 		@document = Document.new
@@ -12,8 +13,8 @@ class DocumentsController < ApplicationController
 		if Parser.validate_filetype(file)
 			title = params[:document][:title]
 			text = File.open(file.tempfile).read
-			@document = Document.create(title: title, text: text)
-			redirect_to @document
+			@document = Document.create(title: title, text: text, group: @group)
+			redirect_to  group_document_path(@group, @document)
 		else
 			flash[:error] = "Please upload a valid filetype"
 			redirect_to new_document_path
@@ -29,6 +30,10 @@ class DocumentsController < ApplicationController
 
 	def find_document
 		@document = Document.find(params[:id])
+	end
+
+	def find_group
+		@group = Group.find(params[:group_id])
 	end
 
 	def keyword_params
