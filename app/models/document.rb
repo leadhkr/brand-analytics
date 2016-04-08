@@ -20,6 +20,10 @@ class Document < ActiveRecord::Base
 
   def count_words(text_array)
     text_array.each_with_object(Hash.new(0)) do |word, word_count_hash|
+      
+
+
+
       if word.upcase == word
         word_count_hash[word] += 1
       else
