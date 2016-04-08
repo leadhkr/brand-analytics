@@ -21,7 +21,6 @@ class Document < ActiveRecord::Base
     # Regex Text
     text_array = split_text
     word_count = count_words(text_array)
-    binding.pry
     # find keywords in hash and multiply count by value
     # return score
   end
