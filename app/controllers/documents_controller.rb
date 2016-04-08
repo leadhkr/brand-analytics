@@ -10,17 +10,18 @@ class DocumentsController < ApplicationController
 	def create
 		file = params[:document][:text]
 		if Parser.validate_filetype(file)
+			title = params[:document][:title]
 			text = File.open(file.tempfile).read
-			@document = Document.create(text: text)
+			@document = Document.create(title: title, text: text)
+			redirect_to @document
 		else
 			flash[:error] = "Please upload a valid filetype"
 			redirect_to new_document_path
 		end
-		# redirect_to @document
 	end
 
 	def show
-		@document.analyze_text
+		Parser.text_score(@document)
 	end
 
 
