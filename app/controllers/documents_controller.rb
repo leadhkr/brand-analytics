@@ -16,6 +16,7 @@ class DocumentsController < ApplicationController
 		@document.analyze_text
 	end
 
+
 	private
 
 	def find_document

@@ -1,9 +1,21 @@
+# == Schema Information
+#
+# Table name: documents
+#
+#  id         :integer          not null, primary key
+#  text       :text
+#  group_id   :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class Document < ActiveRecord::Base
   belongs_to :group
   has_many :document_keywords
   has_many :keywords, through: :document_keywords
 
   validates :text, presence: true
+# validates :text, format: { with: /.txt\z/ }
 
   def analyze_text
     # Regex Text
