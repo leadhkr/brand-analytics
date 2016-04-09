@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160408152126) do
+ActiveRecord::Schema.define(version: 20160408225205) do
 
   create_table "document_keywords", force: :cascade do |t|
     t.integer  "document_id"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20160408152126) do
     t.integer  "group_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.string   "password_digest"
   end
 
   create_table "values", force: :cascade do |t|
