@@ -2,7 +2,9 @@ class User < ActiveRecord::Base
   belongs_to :group
   has_secure_password
 
-  validates :first_name, :last_name, :email, presence: true
+  validates :first_name, :last_name, :email, :password, presence: true
+  validates :email, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
+  validates :password, confirmation: true, length: { minimum: 8 }
 
   def business_account?
     self.business_account

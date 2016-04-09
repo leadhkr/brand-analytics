@@ -12,7 +12,7 @@
   <div><%= f.text_field :first_name, placeholder: 'First Name' %></div>
   <div><%= f.text_field :last_name, placeholder: 'Last Name' %></div>
   <div>
-    <%= f.radio_button :business_account, 'false' %>
+    <%= f.radio_button :business_account, 'false', checked: true %>
     <%= f.label :business_account_false, 'Personal' %>
     <%= f.radio_button :business_account, 'true' %>
     <%= f.label :business_account_true, 'Business' %>
