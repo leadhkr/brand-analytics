@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update]
-  before_action :validate_user
+  before_action :validate_user, except: [:new, :create]
   skip_before_action :authorized?, only: [:new, :create]
 
   def new
