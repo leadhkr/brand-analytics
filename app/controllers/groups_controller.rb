@@ -1,7 +1,6 @@
 class GroupsController < ApplicationController
-	
   before_action :find_group, except: [:new, :create]
-
+	before_action :validate_group
 
 	def new
     @group = Group.new

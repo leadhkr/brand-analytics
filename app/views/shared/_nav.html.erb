@@ -1,0 +1,17 @@
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="<%= root_path %>">Brand Analytics</a>
+    </div>
+
+      <ul class="nav navbar-nav navbar-right">
+        <% if logged_in? %> <!-- If logged in -->
+          <li><%= link_to "Edit Profile", edit_user_path(current_user) %></li>
+          <li><%= link_to "Log Out", logout_path, method: :delete %></li>
+        <% else %> <!-- If logged out -->
+          <li><%= link_to "Register", register_path %></li>
+          <li><%= link_to "Log In", login_path %></li>
+        <% end %>
+      </ul>
+  </div>
+</nav>

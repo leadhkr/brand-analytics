@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
+	skip_before_action :authorized?
+
 	def index
-		render plain: 'Logged In' if logged_in? # redirect_to group_path(current_user.group)
+		redirect_to current_user.group if logged_in?
 	end
 end
