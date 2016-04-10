@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    @user = User.new(new_user_params)
     @group = User.find_group(@user.email) if @user.business_account?
     @user.group = @group if @group
 
@@ -27,15 +27,25 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update(user_params) ? (redirect_to @user.group) : (render 'edit')
+    if @user.update(edit_user_params)
+      redirect_to @user.group
+    else
+      render 'edit'
+    end
   end
 
   private
 
-  def user_params
+  def new_user_params
     params.require(:user).permit(
       :first_name, :last_name, :email,
       :password,:password_confirmation, :business_account
+    )
+  end
+
+  def edit_user_params
+    params.require(:user).permit(
+      :first_name, :last_name, :password,:password_confirmation
     )
   end
 

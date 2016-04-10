@@ -31,3 +31,52 @@
 
     Document-Keyword
     id      document_id     keyword_id
+
+
+--------------------------------------------------------------------
+
+Sentiment Analysis
+
+1. Sentiment: Positive vs. Negative vs. Neutral
+2. Questions Answered
+  - Is this product review positive or negative?
+  - Is this customer email satisfied or dissatisfied
+  - How are people responding to this ad campaign/product
+  - Blogger attitudes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.
