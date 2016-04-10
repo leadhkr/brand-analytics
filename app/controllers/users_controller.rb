@@ -10,11 +10,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @group = User.find_group(@user.email) if @user.business_account?
-    @group ? (@user.group = @group) : (render 'new')
+    @user.group = @group if @group
 
     if @user.save
       session[:user_id] = @user.id
-      redirect_to @group
+      redirect_to @group || @user
     else
       render 'new'
     end
