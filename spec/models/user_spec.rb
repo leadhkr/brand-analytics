@@ -67,11 +67,14 @@ end
 
 # Test Instance Methods
 describe User, '#business_account?' do
+	let(:personal_user) { build(:user, :personal_account) }
+	let(:business_user) { build(:user, :business_account) }
+	
 	it 'defaults to false' do
-		
+		expect(personal_user.business_account?).to be(false)
 	end
 
 	it 'returns true' do
-
+		expect(business_user.business_account?).to be(true)
 	end
 end
