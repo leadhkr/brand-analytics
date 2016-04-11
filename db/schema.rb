@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160408225205) do
+ActiveRecord::Schema.define(version: 20160411142921) do
 
   create_table "document_keywords", force: :cascade do |t|
     t.integer  "document_id"
@@ -51,6 +51,15 @@ ActiveRecord::Schema.define(version: 20160408225205) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "language_codes", force: :cascade do |t|
+    t.string   "name"
+    t.string   "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "language_codes", ["name"], name: "index_language_codes_on_name"
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
