@@ -5,7 +5,6 @@ class Document < ActiveRecord::Base
 
   validates :text, :title, presence: true
   validates :title, length: { minimum: 3 }
-  validates :title, uniqueness: { scope: :group, message: 'Must have unique title' }
 
   accepts_nested_attributes_for :keywords
 end
