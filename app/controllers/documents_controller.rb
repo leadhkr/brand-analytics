@@ -22,7 +22,8 @@ class DocumentsController < ApplicationController
 	end
 
 	def show
-		Parser.text_score(@document)
+		@document.score
+		@document.sentiment
 	end
 
 

@@ -7,8 +7,17 @@ class Parser
     # Regex Text
     split_text = self.words(document)
     word_count = self.word_count(split_text)
-    # find keywords in hash and multiply count by value
-    # return score
+    keyword_count = self.keywords
+    find_matches = self.find_matches(word_count, keyword_count)
+
+    find_matches.values.reduce(:+)
+
+  end
+
+  def self.find_matches(word_count, keyword_count)
+    word_count.keys.each_with_object({}) do |word, value_hash|
+      value_hash[word] = word_count[word] * keyword_count[word] if keyword_count[word]
+    end
   end
 
   private
@@ -22,4 +31,12 @@ class Parser
       word.upcase == word ? word_count[word] += 1 : word_count[word.downcase] += 1
     end
   end
+
+  def self.keywords
+    Keyword.all.each_with_object({}) do |keyword, keyword_hash|
+      keyword_hash[keyword.word] = keyword.values.collect do |keyword| keyword.rating end.first
+      end
+  end
+
+
 end
