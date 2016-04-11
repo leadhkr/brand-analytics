@@ -10,14 +10,14 @@ class DocumentsController < ApplicationController
 
 	def create
 		file = params[:document][:text]
-		if Parser.validate_filetype(file)
-			title = params[:document][:title]
-			text = File.open(file.tempfile).read
-			@document = Document.create(title: title, text: text, group: @group)
+		title = params[:document][:title]
+		text = File.open(file.tempfile).read
+		@document = Document.new(title: title, text: text, group: @group)
+		if Parser.validate_filetype(file) && @document.save
 			redirect_to  group_document_path(@group, @document)
 		else
-			flash[:error] = "Please upload a valid filetype"
-			redirect_to new_document_path
+			flash[:error] = "Please upload a valid filetype" if !Parser.validate_filetype(file)
+			render 'new'
 		end
 	end
 
