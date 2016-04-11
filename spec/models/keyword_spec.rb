@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Keyword do 
-	let! (:keyword) {Keyword.create(name: ":)")}
+	let(:keyword) {Keyword.create(name: ":)")}
 
 
 	it "has a name" do

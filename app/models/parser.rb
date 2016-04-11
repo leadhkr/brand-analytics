@@ -9,10 +9,11 @@ class Parser
     word_count = self.word_count(split_text)
     keyword_count = self.keywords
     find_matches = self.find_matches(word_count, keyword_count)
-
-    find_matches.values.reduce(:+)
-
+    document.sentiment_score = find_matches.values.reduce(:+) || 0
+    document.save
   end
+
+
 
   def self.find_matches(word_count, keyword_count)
     word_count.keys.each_with_object({}) do |word, value_hash|

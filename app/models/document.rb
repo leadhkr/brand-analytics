@@ -9,18 +9,13 @@ class Document < ActiveRecord::Base
   accepts_nested_attributes_for :keywords
 
   def sentiment
-    score = self.score
-      if score > 0
+      if self.sentiment_score > 0
         "positive"
-      elsif score < 0
+      elsif self.sentiment_score < 0
         "negative"
       else
         "neutral"
       end
-  end
-
-  def score
-    score = Parser.text_score(self)
   end
 
 

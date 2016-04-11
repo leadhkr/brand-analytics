@@ -2491,7 +2491,8 @@ keywords = [
 [ "hurrah"  , [5]],
 [ "outstanding" , [5]],
 [ "superb"  , [5]],
-[ "thrilled"  , [5]]
+[ "thrilled"  , [5]],
+[ "😀", [3]]
 ]
 
 keywords.each do |word, rating|
