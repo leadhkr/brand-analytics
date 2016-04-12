@@ -22,8 +22,7 @@ class DocumentsController < ApplicationController
 	end
 
 	def show
-		# binding.pry
-		Parser.text_score(@document)
+		find_or_create_sentiment
 	end
 
 	private
@@ -38,5 +37,9 @@ class DocumentsController < ApplicationController
 
 	def keyword_params
 		params.require(:document).permit(keyword:[:name])
+	end
+
+	def find_or_create_sentiment
+		@document.sentiment_score || Parser.text_score(@document)
 	end
 end

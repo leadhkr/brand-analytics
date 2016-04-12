@@ -2,6 +2,7 @@
 
 <h4>Documents</h4>
 <hr>
+
 <ol>
   <% @group.documents.each do |document| %>
     <li><%= link_to document.title, group_document_path(@group.id, document.id) %></li>
