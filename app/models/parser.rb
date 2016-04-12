@@ -10,8 +10,19 @@
     keyword_count = self.keywords
     find_matches = self.find_matches(word_count, keyword_count)
     doc_keyword = self.save_doc_keyword(find_matches, document)
-    document.sentiment_score = find_matches.values.reduce(:+) || 0
+    matched_values = find_matches.values
+    polarity_score = self.split_polarity(matched_values)
+    document.sentiment_score = matched_values.reduce(:+) || 0
     document.save
+  end
+
+  def self.split_polarity(matched_values)
+    split_array = matched_values.partition { |rating| rating > 0 }
+    positive_ratings = split_array.first
+    negative_ratings = split_array.last
+    average_positive = positive_ratings.reduce(:+) / positive_ratings.length
+    average_negative = negative_ratings.reduce(:+) / negative_ratings.length 
+    polarity_score = average_positive - average_negative
   end
 
   def self.save_doc_keyword(find_matches, document)

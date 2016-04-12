@@ -34,9 +34,7 @@ class DocumentsController < ApplicationController
 
 	def show
 		# binding.pry
-		Parser.text_score(@document)
-		@keyword = @document.keywords.build
-		@value = @keyword.values.build
+		@document.sentiment_score || Parser.text_score(@document)
 	end
 
 	private

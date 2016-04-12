@@ -32,4 +32,10 @@ class Document < ActiveRecord::Base
       "neutral"
     end
   end
+
+
+  def sentiment_percentage
+    self.sentiment_score / Parser.words(self).length * 100
+  end
+
 end
