@@ -14,7 +14,4 @@ class DocumentKeyword < ActiveRecord::Base
   belongs_to :keyword
 
   accepts_nested_attributes_for :keyword
-
-  
-
 end

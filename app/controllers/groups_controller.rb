@@ -27,6 +27,7 @@ class GroupsController < ApplicationController
 	end
 
 	def show
+    @document = Document.new
 	end
 
   def edit
@@ -48,5 +49,4 @@ class GroupsController < ApplicationController
   def find_group
     @group = Group.find(params[:id])
   end
-
 end

@@ -33,11 +33,11 @@ class DocumentsController < ApplicationController
 	end
 
 	def show
+		# binding.pry
 		Parser.text_score(@document)
 		@keyword = @document.keywords.build
 		@value = @keyword.values.build
 	end
-
 
 	private
 
@@ -52,5 +52,4 @@ class DocumentsController < ApplicationController
 	def keyword_params
 		params.require(:document).permit(keyword:[:name])
 	end
-
 end
