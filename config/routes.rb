@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :groups do
     resources :documents
+    resources :tweets, only: :create
   end
 end

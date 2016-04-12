@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160411142921) do
+ActiveRecord::Schema.define(version: 20160411162416) do
 
   create_table "document_keywords", force: :cascade do |t|
     t.integer  "document_id"
@@ -60,6 +60,17 @@ ActiveRecord::Schema.define(version: 20160411142921) do
   end
 
   add_index "language_codes", ["name"], name: "index_language_codes_on_name"
+
+  create_table "tweets", force: :cascade do |t|
+    t.text     "text"
+    t.integer  "favorite_count"
+    t.integer  "retweets"
+    t.date     "tweet_date"
+    t.string   "user_verified"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "document_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
