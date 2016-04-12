@@ -25,7 +25,6 @@ class DocumentsController < ApplicationController
 		Parser.text_score(@document)
 	end
 
-
 	private
 
 	def find_document
@@ -39,5 +38,4 @@ class DocumentsController < ApplicationController
 	def keyword_params
 		params.require(:document).permit(keyword:[:name])
 	end
-
 end

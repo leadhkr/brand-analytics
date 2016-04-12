@@ -34,5 +34,4 @@ class GroupsController < ApplicationController
   def find_group
     @group = Group.find(params[:id])
   end
-
 end

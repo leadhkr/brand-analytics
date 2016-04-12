@@ -14,7 +14,6 @@ class Parser
     document.save
   end
 
-
   def self.save_doc_keyword(find_matches, document)
     find_matches.keys.each do |keyword|
       keyword_id = Keyword.find_by(word: keyword).id
@@ -45,6 +44,4 @@ class Parser
       keyword_hash[keyword.word] = keyword.values.collect do |keyword| keyword.rating end.first
       end
   end
-
-
 end
