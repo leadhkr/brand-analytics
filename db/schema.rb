@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160412214320) do
+ActiveRecord::Schema.define(version: 20160412223153) do
 
   create_table "document_keywords", force: :cascade do |t|
     t.integer  "document_id"
@@ -60,6 +60,15 @@ ActiveRecord::Schema.define(version: 20160412214320) do
   end
 
   add_index "language_codes", ["name"], name: "index_language_codes_on_name"
+
+  create_table "sentiments", force: :cascade do |t|
+    t.integer  "sentiment_score"
+    t.integer  "polarity_score"
+    t.integer  "record_id"
+    t.string   "record_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "tweets", force: :cascade do |t|
     t.text     "text"
