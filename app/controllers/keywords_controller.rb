@@ -8,8 +8,16 @@
 #  updated_at :datetime         not null
 #
 
-FactoryGirl.define do
-  factory :keyword do
-    word { Faker::Hipster.words(1).first }
+class KeywordsController < ApplicationController
+  
+  def create
+    Keyword.create(keyword_params)
   end
+
+  private
+
+  def keyword_params
+    params.require(:keyword, :document_id).permit(:word)
+  end
+  
 end
