@@ -7,18 +7,19 @@
     # Regex Text
     split_text = self.words(document)
     word_count = self.word_count(split_text)
-    keyword_count = self.keywords
+    keyword_count = self.keyword_values
     find_matches = self.find_matches(word_count, keyword_count)
-    doc_keyword = self.save_doc_keyword(find_matches, document)
+    self.save_doc_keyword(find_matches, document)
     document.sentiment_score = find_matches.values.reduce(:+) || 0
     document.save
   end
 
+  private
+
   def self.save_doc_keyword(find_matches, document)
-    find_matches.keys.each do |keyword|
-      keyword_id = Keyword.find_by(word: keyword).id
-      DocumentKeyword.create(keyword_id: keyword_id, document_id: document.id)
-    end
+    words = find_matches.keys
+    keyword_objects = Keyword.where(word: words)
+    keyword_objects.each { |keyword| document.keywords << keyword }
   end
 
   def self.find_matches(word_count, keyword_count)
@@ -26,8 +27,6 @@
       value_hash[word] = word_count[word] * keyword_count[word] if keyword_count[word]
     end
   end
-
-  private
 
   def self.words(document)
     document.text.split(" ")
@@ -39,9 +38,8 @@
     end
   end
 
-  def self.keywords
-    Keyword.all.each_with_object({}) do |keyword, keyword_hash|
-      keyword_hash[keyword.word] = keyword.values.collect { |keyword| keyword.rating }.first
-    end
+  def self.keyword_values
+    word_value_pairs = Keyword.joins(:values).pluck(:word, :rating)
+    Hash[word_value_pairs]
   end
 end
