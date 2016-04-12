@@ -1,11 +1,22 @@
+# == Schema Information
+#
+# Table name: documents
+#
+#  id              :integer          not null, primary key
+#  text            :text
+#  group_id        :integer
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  title           :string
+#  sentiment_score :float
+#
+
 class DocumentsController < ApplicationController
 	before_action :find_document, except: [:new, :create]
 	before_action :find_group, only: [:new, :show, :create]
 
 	def new
 		@document = Document.new
-		@doc_keywords = @document.document_keywords.build
-		@keyword = @doc_keywords.build_keyword
 	end
 
 	def create
@@ -23,6 +34,8 @@ class DocumentsController < ApplicationController
 
 	def show
 		Parser.text_score(@document)
+		@keyword = @document.keywords.build
+		@value = @keyword.values.build
 	end
 
 

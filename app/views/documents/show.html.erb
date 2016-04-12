@@ -8,3 +8,13 @@
   <%= @document.sentiment %>
   <%= @document.sentiment_score %>
 </h1>
+
+<%= form_for @keyword do |f| %>
+  <%= f.label :word, 'Keyword' %>
+  <%= f.text_field :word %>
+  <%= f.fields_for @value do |form|%>
+    <%= form.text_field :rating %>
+  <% end %>
+  <%= f.submit %>
+
+<% end %>

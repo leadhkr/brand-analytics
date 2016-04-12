@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: documents
+#
+#  id              :integer          not null, primary key
+#  text            :text
+#  group_id        :integer
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  title           :string
+#  sentiment_score :float
+#
+
 class Document < ActiveRecord::Base
   belongs_to :group
   has_many :document_keywords

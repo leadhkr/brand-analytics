@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id               :integer          not null, primary key
+#  first_name       :string
+#  last_name        :string
+#  email            :string
+#  business_account :boolean
+#  group_id         :integer
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  password_digest  :string
+#
+
 FactoryGirl.define do
   sequence :email do |n|
     "person#{n}@apple.com"
