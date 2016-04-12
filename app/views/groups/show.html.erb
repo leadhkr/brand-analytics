@@ -1,2 +1,12 @@
 <h1><%= @group.name %></h1>
-<%= link_to "Analyze Document", new_group_document_path(@group) %>
+
+<h4>Documents</h4>
+<hr>
+<ol>
+  <% @group.documents.each do |document| %>
+    <li><%= link_to document.title, group_document_path(@group.id, document.id) %></li>
+  <% end %>
+</ol>
+
+<%= render 'shared/document_form' %>
+<%= render 'shared/tweets_form' %>

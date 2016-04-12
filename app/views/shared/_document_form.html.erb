@@ -1,0 +1,16 @@
+<h4>Upload Document</h4>
+<hr>
+<div><%=flash[:error]%></div>
+
+<%=form_for [@group, @document] do |f| %>
+	<p>
+		<%= f.label :title, 'Document Title' %></br>
+		<%= f.text_field :title, placeholder: 'Title' %>
+	</p>
+
+	<p>
+		<%= f.label :text, 'Upload File' %></br>
+		<%= f.file_field :text %>
+	</p>
+	<%= f.submit %>
+<% end %>

@@ -10,6 +10,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
+gem 'twitter'
 
 group :development, :test do
   gem 'pry-byebug'
@@ -18,6 +19,7 @@ group :development, :test do
   gem 'faker'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'capybara'
+  gem 'dotenv-rails'
 end
 
 group :development do

@@ -12,6 +12,7 @@ class GroupsController < ApplicationController
 	end
 
 	def show
+    @document = Document.new
 	end
 
   def edit
