@@ -7,7 +7,7 @@ class TweetsController < ApplicationController
     result_type = params[:result_type]
 
     @group = Group.find(params[:group_id])
-    @twitter_search = TwitterSearch.new(search_query: query, group: @group)
+    @twitter_search = TwitterSearch.create(search_query: query, group: @group)
     tweets = TweetService.sanitize_tweets(query, language, result_type, tweet_count)
     # tweets_string = Tweet.stringify_tweets(tweets)
     @twitter_search.tweets += tweets
