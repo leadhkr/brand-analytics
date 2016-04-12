@@ -3,7 +3,7 @@ class Document < ActiveRecord::Base
   has_many :tweets
   has_many :document_keywords
   has_many :keywords, through: :document_keywords
-  has_one :document_sentiment
+  has_many :sentiments, as: :record
 
   validates :text, :title, presence: true
   validates :title, length: { minimum: 3 }
