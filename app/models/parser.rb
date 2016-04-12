@@ -1,4 +1,4 @@
-class Parser
+  class Parser
   def self.validate_filetype(file)
     file.content_type == "text/plain"
   end
@@ -41,7 +41,7 @@ class Parser
 
   def self.keywords
     Keyword.all.each_with_object({}) do |keyword, keyword_hash|
-      keyword_hash[keyword.word] = keyword.values.collect do |keyword| keyword.rating end.first
-      end
+      keyword_hash[keyword.word] = keyword.values.collect { |keyword| keyword.rating }.first
+    end
   end
 end

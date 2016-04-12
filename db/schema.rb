@@ -11,7 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20160411162416) do
 
   create_table "document_keywords", force: :cascade do |t|

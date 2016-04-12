@@ -22,6 +22,7 @@ class DocumentsController < ApplicationController
 	end
 
 	def show
+		# binding.pry
 		Parser.text_score(@document)
 	end
 
