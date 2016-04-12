@@ -8,7 +8,7 @@
     <%= collection_select :language_code, :id, LanguageCode.all, :name, :name, selected: 'English' %>
   </div>
   <div>
-    <%= number_field_tag :tweet_count %>
+    <%= number_field_tag :tweet_count, value = 50 %>
   </div>
 
   <div>
