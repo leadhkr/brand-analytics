@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160412181709) do
+ActiveRecord::Schema.define(version: 20160412214320) do
 
   create_table "document_keywords", force: :cascade do |t|
     t.integer  "document_id"
@@ -23,10 +23,9 @@ ActiveRecord::Schema.define(version: 20160412181709) do
   create_table "documents", force: :cascade do |t|
     t.text     "text"
     t.integer  "group_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string   "title"
-    t.float    "sentiment_score"
   end
 
   create_table "groups", force: :cascade do |t|

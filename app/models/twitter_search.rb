@@ -1,6 +1,7 @@
 class TwitterSearch < ActiveRecord::Base
   has_many :tweets
   belongs_to :group
+  has_many :twitter_sentiments
 
   validates :search_query, presence: true
   validates :search_query, format: {with: /\A^(#|@)/, on: :create, message: "Search query must begin with @ or #"}

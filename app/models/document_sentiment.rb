@@ -1,0 +1,4 @@
+class DocumentSentiment < ActiveRecord::Base
+  belongs_to :document
+
+end
