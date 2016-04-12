@@ -1,5 +1,4 @@
 class TweetService
-
   def self.sanitize_tweets(query, language, result_type, tweet_count)
     tweets = query_to_tweets(query, language, result_type, tweet_count)
     tweet_objects = create_tweets(tweets)

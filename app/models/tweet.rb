@@ -1,9 +1,9 @@
 class Tweet < ActiveRecord::Base
-  belongs_to :document
+  belongs_to :twitter_search
 
-  validates :text, :favorite_count, :retweets, :tweet_date, :user_verified, :profile_image_url, :name, presence: true
+  validates :text, :favorite_count, :retweets, :tweet_date, :user_verified, presence: true
 
-  def self.statuses(query, language: 'English', result_type: 'recent', tweet_count: 20)
+  def self.statuses(query, language: 'English', result_type: 'recent', tweet_count: 50)
     language_code = find_language_code(language)
     results = call_twitter_api(query, language_code, result_type)
     limited_tweets(results, tweet_count)

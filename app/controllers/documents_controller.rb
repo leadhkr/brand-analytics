@@ -1,16 +1,3 @@
-# == Schema Information
-#
-# Table name: documents
-#
-#  id              :integer          not null, primary key
-#  text            :text
-#  group_id        :integer
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  title           :string
-#  sentiment_score :float
-#
-
 class DocumentsController < ApplicationController
 	before_action :find_document, except: [:new, :create]
 	before_action :find_group, only: [:new, :show, :create]
