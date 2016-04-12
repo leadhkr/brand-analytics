@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: documents
+#
+#  id              :integer          not null, primary key
+#  text            :text
+#  group_id        :integer
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  title           :string
+#  sentiment_score :float
+#
+
 class Document < ActiveRecord::Base
   belongs_to :group
   has_many :tweets
@@ -19,4 +32,10 @@ class Document < ActiveRecord::Base
       "neutral"
     end
   end
+
+
+  def sentiment_percentage
+    self.sentiment_score / Parser.words(self).length * 100
+  end
+
 end

@@ -1,9 +1,16 @@
 <h1><%= @document.title %></h1>
 <h2>
   <%= @document.sentiment %>
-  <%= @document.sentiment_score %>
+  <h2>Sentiment Score</h2>  
+  <h2><%= @document.sentiment_score %></h2>
+  <%=  %>  
+  <h2>Sentiment Percentage</h2>
+  <h2><%= @document.sentiment_percentage %> %</h2>
+
 </h2>
 
 <p>
   <%= @document.text %>
 </p>
+
+
