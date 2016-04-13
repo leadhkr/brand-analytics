@@ -19,5 +19,7 @@ class Document < ActiveRecord::Base
     content_type.match(/(?<=\/)[^\]]+/).to_s
   end
 
+  
+
   accepts_nested_attributes_for :keywords
 end

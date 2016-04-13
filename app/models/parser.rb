@@ -1,7 +1,8 @@
 class Parser
   def self.text_score(record)
-    # Regex Text
-    split_text = self.words(record) #[ yes!!, no, $money ]
+    split_text = self.words(record)
+    stripped_text = self.strip_text(record)
+    split_text = self.words(stripped_text)
     word_count = self.word_count(split_text)
     keyword_count = self.keyword_values
     find_matches = self.find_matches(word_count, keyword_count)
@@ -14,12 +15,12 @@ class Parser
 
   private
 
-  def strip_text
-    
+  def self.strip_text(record)
+    record.text.gsub(/[#@,.:;?]/, '')
   end
 
   def self.calculate_sentiment_percentage(split_text, sentiment_score)
-    (sentiment_score / (split_text.length/2) * 100).to_i
+    (sentiment_score / split_text.length * 100).to_i
   end
 
   def self.sentiment_score(matched_values)
@@ -43,12 +44,16 @@ class Parser
 
   def self.find_matches(word_count, keyword_count)
     word_count.keys.each_with_object({}) do |word, value_hash|
-      value_hash[word] = word_count[word] * keyword_count[word] if keyword_count[word]
+      if word == word.upcase && keyword_count[word.downcase]
+        value_hash[word] = word_count[word] * (keyword_count[word.downcase] * 2)
+      elsif keyword_count[word]
+        value_hash[word] = word_count[word] * keyword_count[word]
+      end
     end
   end
 
-  def self.words(record)
-    record.text.split(" ")
+  def self.words(stripped_text)
+    stripped_text.split(" ")
   end
 
   def self.word_count(split_text)

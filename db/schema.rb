@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160413174124) do
+ActiveRecord::Schema.define(version: 20160413224047) do
 
   create_table "document_keywords", force: :cascade do |t|
     t.integer  "document_id"
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20160413174124) do
 
   create_table "sentiments", force: :cascade do |t|
     t.float    "sentiment_score"
-    t.float    "polarity_score"
+    t.integer  "polarity_score"
     t.integer  "record_id"
     t.string   "record_type"
     t.datetime "created_at",           null: false

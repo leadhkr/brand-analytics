@@ -1,6 +1,7 @@
 class DocumentsController < ApplicationController
 	before_action :find_document, except: [:new, :create]
 	before_action :find_group, only: [:new, :show, :create]
+	before_action :validate_file, only: [:create]
 
 	def create
 		file = params[:document][:text]
@@ -8,7 +9,6 @@ class DocumentsController < ApplicationController
 		title = params[:document][:title]
 		text = File.open(file.tempfile).read
 		@document = Document.new(title: title, text: text, file_type: file_type, group: @group)
-
 		if @document.save
 			redirect_to group_document_path(@group, @document)
 		else
@@ -37,4 +37,12 @@ class DocumentsController < ApplicationController
 	def find_or_create_sentiment
 		 @document.sentiment || Parser.text_score(@document)
 	end
+
+	def validate_file
+		if params[:document][:text].nil? 
+			redirect_to group_path(@group)
+			flash[:error] = "Please upload a file"			
+		end
+	end
+
 end
