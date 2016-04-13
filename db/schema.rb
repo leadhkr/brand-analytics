@@ -63,8 +63,8 @@ ActiveRecord::Schema.define(version: 20160413122738) do
   add_index "language_codes", ["name"], name: "index_language_codes_on_name"
 
   create_table "sentiments", force: :cascade do |t|
-    t.integer  "sentiment_score"
-    t.integer  "polarity_score"
+    t.float    "sentiment_score"
+    t.float    "polarity_score"
     t.integer  "record_id"
     t.string   "record_type"
     t.datetime "created_at",      null: false

@@ -12,19 +12,4 @@ class Document < ActiveRecord::Base
   # WRITE CUSTOM VALIDATION FOR FILE TYPES
 
   accepts_nested_attributes_for :keywords
-
-  # def sentiment
-  #   if sentiment_score > 0
-  #     "positive"
-  #   elsif sentiment_score < 0
-  #     "negative"
-  #   else
-  #     "neutral"
-  #   end
-  # end
-
-  def sentiment_percentage
-    "%.2f" % (self.sentiment_score / Parser.words(self).length * 100) + "%"
-  end
-
 end

@@ -26,6 +26,7 @@ class Parser
     split_array = matched_values.partition { |rating| rating > 0 }
     positive_ratings = split_array.first
     negative_ratings = split_array.last
+
       if positive_ratings.length == 0
         average_positive = 0
         average_negative = negative_ratings.reduce(:+) / negative_ratings.length
@@ -33,9 +34,10 @@ class Parser
         average_positive = positive_ratings.reduce(:+) / positive_ratings.length
         average_negative = 0
       else
-      average_positive = positive_ratings.reduce(:+) / positive_ratings.length
-      average_negative = negative_ratings.reduce(:+) / negative_ratings.length
+        average_positive = positive_ratings.reduce(:+) / positive_ratings.length
+        average_negative = negative_ratings.reduce(:+) / negative_ratings.length
       end
+
     average_positive - average_negative
   end
 

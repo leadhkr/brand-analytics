@@ -1,7 +1,8 @@
+# Values
 values = [ [1, 1], [2, 2], [3, 3], [4, 4], [5, 5], [0, 6], [-1, 7], [-2, 8], [-3, 9], [-4, 10], [-5, 11] ]
 
 values.each { |value, id| Value.create(rating: value, id: id) }
-
+# Keywords
 keywords = [
 [ "bastard" , [11]],
 [ "bastards"  , [11]],

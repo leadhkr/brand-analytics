@@ -1,13 +1,15 @@
 <h1><%= @document.title %></h1>
-<h2>
-  <%= @document.sentiment %>
-  <h2>Sentiment Score</h2>
-  <h2><%= @document.sentiment_score %></h2>
-  <%=  %>
-  <h2>Sentiment Percentage</h2>
-  <h2><%= @document.sentiment_percentage %></h2>
+  <h2>Overall Sentiment</h2>
 
-</h2>
+  <h2><%= @document.sentiment.display_sentiment %></h2>
+  <h2>Sentiment Score</h2>
+  <h2><%= @document.sentiment.sentiment_score %></h2>
+  <h2>Polarity Score</h2>
+  <h2><%= @document.sentiment.polarity_score %></h2>  
+  <h2>Sentiment Percentage</h2>
+  <h2><%= @document.sentiment.sentiment_percentage %></h2>
+
+
 
 <p>
   <%= @document.text %>
