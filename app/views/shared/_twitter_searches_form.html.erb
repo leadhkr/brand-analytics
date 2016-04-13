@@ -1,29 +1,29 @@
-<h4>Analyze Twitter Data</h4>
-<hr>
+<div class="col-md-offset-2 col-md-8">
+  <h4>Analyze Twitter Data</h4>
+  <hr>
 
-<div class="form-group">
   <%= form_for [@group, @twitter_search] do |f| %>
-    <div>
+    <div class="form-group">
       <%= f.label :search_query, "Twitter Search" %>
       <%= f.text_field :search_query, placeholder: "Enter Twitter Handle or Hashtag", class: "form-control" %>
     </div>
 
-    <div>
+    <div class="form-group">
       <%= f.label :description, "Description" %>
       <%= f.text_area :description, placeholder: "Enter description of search...", class: "form-control" %>
     </div>
 
-    <div class="dropdown">
+    <div class="dropdown form-group">
       <%= f.label :language_code, "Language" %>
       <%= f.collection_select :language_code, LanguageCode.all, :name, :name, {prompt: "Select a category"}, {class: "form-control"} %>
     </div>
 
-    <div>
+    <div class="form-group">
       <%= f.label :tweet_count, "Tweet Count" %>
       <%= f.number_field :tweet_count, value: 50, class: "form-control" %>
     </div>
 
-    <div>
+    <div class="form-group">
       <%= label_tag "Tweet Type" %><br/>
       <%= f.radio_button :result_type, 'recent', checked: true, class: "radio-inline" %>
       <%= f.label :result_type_recent, 'Recent' %>
@@ -33,8 +33,8 @@
       <%= f.label :result_type_mixed, 'Mixed' %>
     </div>
 
-    <div>
-      <%= f.submit %>
+    <div class="form-group">
+      <%= f.submit "Search Twitter", class: "btn btn-primary" %>
     </div>
   <% end %>
 </div>

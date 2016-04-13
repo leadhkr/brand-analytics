@@ -1,16 +1,17 @@
-<h4>Documents</h4>
-<ol>
-  <% @group.documents.each do |document| %>
-    <li><%= link_to document.title, group_document_path(@group, document) %></li>
-  <% end %>
-</ol>
+<div class="col-md-offset-2 col-md-8">
+  <%= "<h4>Documents</h4>" if @group.documents.any? %>
+  <ol>
+    <% @group.documents.each do |document| %>
+      <li><%= link_to document.title, group_document_path(@group, document) %></li>
+    <% end %>
+  </ol>
 
-<h4>Twitter Searches</h4>
-<ol>
-  <% @group.twitter_searches.each do |twitter_search| %>
-    <li><%= link_to twitter_search.search_query, group_twitter_search_path(@group, twitter_search) %></li>
-  <% end %>
-</ol>
-
+  <%= "<h4>Twitter Searches</h4>" if @group.twitter_searches.any? %>
+  <ol>
+    <% @group.twitter_searches.each do |twitter_search| %>
+      <li><%= link_to twitter_search.search_query, group_twitter_search_path(@group, twitter_search) %></li>
+    <% end %>
+  </ol>
+</div>
 <%= render 'shared/document_form' %>
 <%= render 'shared/twitter_searches_form' %>
