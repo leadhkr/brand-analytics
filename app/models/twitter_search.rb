@@ -26,7 +26,7 @@ class TwitterSearch < ActiveRecord::Base
 
   def sentiment_array
     self.tweets.map do |tweet|
-      tweet.sentiment.sentiment_score
+      tweet.sentiment.sentiment_percentage
     end
   end
 

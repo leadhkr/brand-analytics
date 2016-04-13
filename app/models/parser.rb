@@ -14,8 +14,12 @@ class Parser
 
   private
 
+  def strip_text
+    
+  end
+
   def self.calculate_sentiment_percentage(split_text, sentiment_score)
-    (sentiment_score / split_text.length * 100).to_i
+    (sentiment_score / (split_text.length/2) * 100).to_i
   end
 
   def self.sentiment_score(matched_values)
