@@ -24,7 +24,5 @@ class Sentiment < ActiveRecord::Base
     end
   end
 
-  def sentiment_percentage
-    self.sentiment_score / Parser.words(self.record).length * 100
-  end
+
 end

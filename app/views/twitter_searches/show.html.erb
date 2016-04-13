@@ -4,8 +4,7 @@
 <% @twitter_search.tweets.each do |tweet| %>
   <img src='<%=tweet.profile_image_url%>'/>
   <%= tweet.text %>
-  <%= tweet.sentiment.sentiment_score %>
-  <%= tweet.sentiment.sentiment_percentage %>
+  <%= " #{tweet.sentiment.sentiment_percentage}%" %>
   <%= tweet.sentiment.polarity_score %>
   <%= tweet.sentiment.display_sentiment %>
 

@@ -8,11 +8,15 @@ class Parser
     matched_values = find_matches.values
     polarity_score = self.calculate_polarity(matched_values)
     sentiment_score = self.sentiment_score(matched_values)
-
-    record.create_sentiment(sentiment_score: sentiment_score, polarity_score: polarity_score)
+    sentiment_percentage = self.calculate_sentiment_percentage(split_text, sentiment_score)
+    record.create_sentiment(sentiment_score: sentiment_score, polarity_score: polarity_score, sentiment_percentage: sentiment_percentage)
   end
 
   private
+
+  def self.calculate_sentiment_percentage(split_text, sentiment_score)
+    (sentiment_score / split_text.length * 100).to_i
+  end
 
   def self.sentiment_score(matched_values)
     matched_values.reduce(:+) || 0
