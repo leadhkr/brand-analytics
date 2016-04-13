@@ -1,15 +1,3 @@
-# == Schema Information
-#
-# Table name: twitter_searches
-#
-#  id           :integer          not null, primary key
-#  search_query :string
-#  description  :text
-#  group_id     :integer
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#
-
 class TwitterSearch < ActiveRecord::Base
   has_many :tweets
   belongs_to :group

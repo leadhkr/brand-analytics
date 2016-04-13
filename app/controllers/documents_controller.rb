@@ -4,7 +4,7 @@ class DocumentsController < ApplicationController
 
 	def create
 		file = params[:document][:text]
-		file_type = file.content_type
+		file_type = Document.parse_file_type(file.content_type)
 		title = params[:document][:title]
 		text = File.open(file.tempfile).read
 		@document = Document.new(title: title, text: text, file_type: file_type, group: @group)
