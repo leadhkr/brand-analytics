@@ -1,22 +1,3 @@
-# == Schema Information
-#
-# Table name: tweets
-#
-#  id                :integer          not null, primary key
-#  text              :text
-#  favorite_count    :integer
-#  retweets          :integer
-#  tweet_date        :date
-#  user_verified     :string
-#  created_at        :datetime         not null
-#  updated_at        :datetime         not null
-#  document_id       :integer
-#  profile_image_url :string
-#  name              :string
-#  location          :string
-#  twitter_search_id :integer
-#
-
 class Tweet < ActiveRecord::Base
   belongs_to :twitter_search
   has_one :sentiment, as: :record
@@ -45,5 +26,9 @@ class Tweet < ActiveRecord::Base
 
   def self.limited_tweets(tweets, tweet_count)
     tweets.first(tweet_count)
+  end
+
+  def self.find_tweets(twitter_search_id)
+    self.select("text, name, favorite_count, retweets, tweet_date, user_verified, profile_image_url, location, sentiment_score, polarity_score, sentiment_percentage").joins(:sentiment).where("twitter_search_id = ?", twitter_search_id)
   end
 end
