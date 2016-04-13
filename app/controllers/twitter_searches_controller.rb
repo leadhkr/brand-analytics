@@ -27,6 +27,7 @@ class TwitterSearchesController < ApplicationController
 
   def show
     find_or_create_sentiment
+
   end
 
   private
@@ -44,6 +45,6 @@ class TwitterSearchesController < ApplicationController
   end
 
   def find_or_create_sentiment
-    Parser.text_score(@twitter_search.parse_tweets)
+    @twitter_search.parse_tweets
   end
 end

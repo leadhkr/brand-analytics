@@ -19,6 +19,7 @@
 
 class Tweet < ActiveRecord::Base
   belongs_to :twitter_search
+  has_one :sentiment, as: :record
 
   validates :text, :favorite_count, :retweets, :tweet_date, :user_verified, presence: true
 

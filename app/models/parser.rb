@@ -6,14 +6,10 @@ class Parser
     keyword_count = self.keyword_values
     find_matches = self.find_matches(word_count, keyword_count)
     matched_values = find_matches.values
-    polarity_score = self.split_polarity(matched_values)
+    polarity_score = self.calculate_polarity(matched_values)
     sentiment_score = self.sentiment_score(matched_values)
 
-    if record.class == Tweet
-      record.twitter_search.sentiments.create(sentiment_score: sentiment_score, polarity_score: polarity_score)
-    else
-      record.create_sentiment(sentiment_score: sentiment_score, polarity_score: polarity_score)
-    end
+    record.create_sentiment(sentiment_score: sentiment_score, polarity_score: polarity_score)
   end
 
   private
@@ -23,22 +19,18 @@ class Parser
   end
 
   def self.split_polarity(matched_values)
-    split_array = matched_values.partition { |rating| rating > 0 }
+    matched_values.partition { |rating| rating > 0 }
+  end
+
+  def self.calculate_polarity(matched_values)
+    split_array = split_polarity(matched_values)
     positive_ratings = split_array.first
     negative_ratings = split_array.last
-
-      if positive_ratings.length == 0
-        average_positive = 0
-        average_negative = negative_ratings.reduce(:+) / negative_ratings.length
-      elsif negative_ratings.length == 0
-        average_positive = positive_ratings.reduce(:+) / positive_ratings.length
-        average_negative = 0
-      else
-        average_positive = positive_ratings.reduce(:+) / positive_ratings.length
-        average_negative = negative_ratings.reduce(:+) / negative_ratings.length
-      end
-
-    average_positive - average_negative
+    total_positive = positive_ratings.reduce(:+) || 0
+    avg_p = positive_ratings.empty? ? total_positive : total_positive/positive_ratings.length
+    total_negative = negative_ratings.reduce(:+) || 0
+    avg_n = negative_ratings.empty? ? total_negative : total_negative/negative_ratings.length
+    avg_p - avg_n
   end
 
   def self.find_matches(word_count, keyword_count)
