@@ -1,6 +1,5 @@
 class Parser
   def self.text_score(record)
-    split_text = self.words(record)
     stripped_text = self.strip_text(record)
     split_text = self.words(stripped_text)
     word_count = self.word_count(split_text)
