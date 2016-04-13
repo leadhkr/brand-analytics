@@ -3,7 +3,7 @@ class Document < ActiveRecord::Base
   has_many :tweets
   has_many :document_keywords
   has_many :keywords, through: :document_keywords
-  has_many :sentiments, as: :record
+  has_one :sentiment, as: :record
 
   validates :text, :title, presence: true
   validates :title, length: { minimum: 3 }
@@ -11,15 +11,15 @@ class Document < ActiveRecord::Base
 
   accepts_nested_attributes_for :keywords
 
-  def sentiment
-    if sentiment_score > 0
-      "positive"
-    elsif sentiment_score < 0
-      "negative"
-    else
-      "neutral"
-    end
-  end
+  # def sentiment
+  #   if sentiment_score > 0
+  #     "positive"
+  #   elsif sentiment_score < 0
+  #     "negative"
+  #   else
+  #     "neutral"
+  #   end
+  # end
 
 
   def sentiment_percentage
