@@ -1,7 +1,7 @@
 class Parser
   def self.text_score(record)
     # Regex Text
-    split_text = self.words(record)
+    split_text = self.words(record) #[ yes!!, no, $money ]
     word_count = self.word_count(split_text)
     keyword_count = self.keyword_values
     find_matches = self.find_matches(word_count, keyword_count)
