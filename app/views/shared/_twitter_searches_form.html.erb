@@ -1,0 +1,33 @@
+<h4>Search Tweets</h4>
+<hr>
+
+<%= form_for [@group, @twitter_search] do |f| %>
+  <div>
+    <%= f.text_field :search_query, placeholder: "@flatironschool" %>
+  </div>
+
+  <div>
+    <%= f.text_area :description %>
+  </div>
+
+  <div>
+    <%= f.collection_select :language_code, LanguageCode.all, :name, :name, selected: 'English' %>
+  </div>
+
+  <div>
+    <%= f.number_field :tweet_count, value: 50 %>
+  </div>
+
+  <div>
+    <%= f.radio_button :result_type, 'recent', checked: true %>
+    <%= f.label :result_type_recent, 'Recent' %>
+    <%= f.radio_button :result_type, 'popular' %>
+    <%= f.label :result_type_popular, 'Popular' %>
+    <%= f.radio_button :result_type, 'mixed' %>
+    <%= f.label :result_type_mixed, 'Mixed' %>
+  </div>
+
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>

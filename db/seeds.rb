@@ -2493,6 +2493,16 @@ lang_codes = { "Afrikaans" => "af", "Albanian" => "sq", "Arabic" => "ar", "Armen
 
 lang_codes.each { |language_name, language_code| LanguageCode.create(name: language_name, code: language_code ) }
 
-#group
+# GROUP
 
-spotify = Group.create(name: "Spotify", street_address: "123 broad st", city: "cupertino", state: "CA", zip_code: 98103, domain: "@spotify.com")
+groups = [
+  ['Spotify', '@spotify.com'], ['Google', '@gmail.com'], ['Microsoft', '@microsoft.com'],
+  ['Apple', '@apple.com'], ['Facebook', '@facebook.com'], ['Amazon', '@amazon.com']
+]
+
+groups.each do |group_array|
+  Group.create(
+    name: group_array[0], street_address: Faker::Address.street_address, city: Faker::Address.city,
+    state: Faker::Address.state, zip_code: Faker::Address.zip.to_i, domain: group_array[1]
+  )
+end

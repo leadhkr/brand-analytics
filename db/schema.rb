@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160412223153) do
+ActiveRecord::Schema.define(version: 20160413122738) do
 
   create_table "document_keywords", force: :cascade do |t|
     t.integer  "document_id"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20160412223153) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "title"
+    t.string   "file_type"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -89,8 +90,11 @@ ActiveRecord::Schema.define(version: 20160412223153) do
     t.string   "search_query"
     t.text     "description"
     t.integer  "group_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "result_type"
+    t.integer  "tweet_count"
+    t.string   "language_code"
   end
 
   create_table "users", force: :cascade do |t|

@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   resources :groups do
     resources :documents
     resources :tweets, only: :create
-    resources :twitter_searches, only: :show
+    resources :twitter_searches, only: [:create, :show]
   end
 end

@@ -9,6 +9,8 @@ class Document < ActiveRecord::Base
   validates :title, length: { minimum: 3 }
   validates :text, length: { minimum: 5 }
 
+  # WRITE CUSTOM VALIDATION FOR FILE TYPES
+
   accepts_nested_attributes_for :keywords
 
   # def sentiment
@@ -20,7 +22,6 @@ class Document < ActiveRecord::Base
   #     "neutral"
   #   end
   # end
-
 
   def sentiment_percentage
     "%.2f" % (self.sentiment_score / Parser.words(self).length * 100) + "%"

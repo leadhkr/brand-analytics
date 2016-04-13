@@ -3,14 +3,17 @@
 <div><%=flash[:error]%></div>
 
 <%=form_for [@group, @document] do |f| %>
-	<p>
+	<div>
 		<%= f.label :title, 'Document Title' %></br>
 		<%= f.text_field :title, placeholder: 'Title' %>
-	</p>
+	</div>
 
-	<p>
+	<div>
 		<%= f.label :text, 'Upload File' %></br>
 		<%= f.file_field :text %>
-	</p>
-	<%= f.submit %>
+	</div>
+
+	<div>
+		<%= f.submit %>
+	</div>
 <% end %>

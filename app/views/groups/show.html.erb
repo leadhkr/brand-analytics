@@ -1,13 +1,18 @@
 <h1><%= @group.name %></h1>
 
 <h4>Documents</h4>
-<hr>
-
 <ol>
   <% @group.documents.each do |document| %>
-    <li><%= link_to document.title, group_document_path(@group.id, document.id) %></li>
+    <li><%= link_to document.title, group_document_path(@group, document) %></li>
+  <% end %>
+</ol>
+
+<h4>Twitter Searches</h4>
+<ol>
+  <% @group.twitter_searches.each do |twitter_search| %>
+    <li><%= link_to twitter_search.search_query, group_twitter_search_path(@group, twitter_search) %></li>
   <% end %>
 </ol>
 
 <%= render 'shared/document_form' %>
-<%= render 'shared/tweets_form' %>
+<%= render 'shared/twitter_searches_form' %>

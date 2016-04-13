@@ -1,18 +1,3 @@
-# == Schema Information
-#
-# Table name: groups
-#
-#  id             :integer          not null, primary key
-#  name           :string
-#  street_address :string
-#  city           :string
-#  state          :string
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
-#  zip_code       :integer
-#  domain         :string
-#
-
 class GroupsController < ApplicationController
   before_action :find_group, except: [:new, :create]
 	before_action :validate_group
@@ -28,6 +13,7 @@ class GroupsController < ApplicationController
 
 	def show
     @document = Document.new
+    @twitter_search = TwitterSearch.new
 	end
 
   def edit
