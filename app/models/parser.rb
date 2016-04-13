@@ -12,7 +12,8 @@
     # doc_keyword = self.save_doc_keyword(find_matches, document)
     matched_values = find_matches.values
     polarity_score = self.split_polarity(matched_values)
-    document.document_sentiment.sentiment_score = matched_values.reduce(:+) || 0
+    sentiment_score = matched_values.reduce(:+) || 0
+    document.sentiment = Sentiment.create(sentiment_score: sentiment_score, polarity_score: polarity_score)
     document.save
   end
 
@@ -23,18 +24,17 @@
     positive_ratings = split_array.first
     negative_ratings = split_array.last
 
-      if positive_ratings.length == 0
-        average_positive = 0
-        average_negative = negative_ratings.reduce(:+) / negative_ratings.length
-      elsif negative_ratings.length == 0
-        average_positive = positive_ratings.reduce(:+) / positive_ratings.length
-        average_negative = 0
-      else
+    if positive_ratings.length == 0
+      average_positive = 0
+      average_negative = negative_ratings.reduce(:+) / negative_ratings.length
+    elsif negative_ratings.length == 0
+      average_positive = positive_ratings.reduce(:+) / positive_ratings.length
+      average_negative = 0
+    else
       average_positive = positive_ratings.reduce(:+) / positive_ratings.length
       average_negative = negative_ratings.reduce(:+) / negative_ratings.length
-      end
+    end
     polarity_score = average_positive - average_negative
-    binding.pry
   end
 
   def self.save_doc_keyword(find_matches, document)

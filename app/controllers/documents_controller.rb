@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: documents
+#
+#  id         :integer          not null, primary key
+#  text       :text
+#  group_id   :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  title      :string
+#
+
 class DocumentsController < ApplicationController
 	before_action :find_document, except: [:new, :create]
 	before_action :find_group, only: [:new, :show, :create]
@@ -38,7 +50,6 @@ class DocumentsController < ApplicationController
 	end
 
 	def find_or_create_sentiment
-		# @document.document_sentiment.sentiment_score || 
-		Parser.text_score(@document)
+		 @document.sentiment || Parser.text_score(@document)
 	end
 end

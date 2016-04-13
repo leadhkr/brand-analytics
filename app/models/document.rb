@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: documents
+#
+#  id         :integer          not null, primary key
+#  text       :text
+#  group_id   :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  title      :string
+#
+
 class Document < ActiveRecord::Base
   belongs_to :group
   has_many :tweets
@@ -11,19 +23,6 @@ class Document < ActiveRecord::Base
 
   accepts_nested_attributes_for :keywords
 
-  # def sentiment
-  #   if sentiment_score > 0
-  #     "positive"
-  #   elsif sentiment_score < 0
-  #     "negative"
-  #   else
-  #     "neutral"
-  #   end
-  # end
 
-
-  def sentiment_percentage
-    "%.2f" % (self.sentiment_score / Parser.words(self).length * 100) + "%"
-  end
 
 end
