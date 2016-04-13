@@ -1867,6 +1867,7 @@ keywords = [
 [ "benefitting" , [2]],
 [ "better"  , [2]],
 [ "bless" , [2]],
+[ "blessed" , [2]],
 [ "blesses" , [2]],
 [ "blithe"  , [2]],
 [ "bold"  , [2]],
