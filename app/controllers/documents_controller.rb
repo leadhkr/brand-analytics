@@ -1,16 +1,19 @@
 class DocumentsController < ApplicationController
 	before_action :find_document, except: [:new, :create]
 	before_action :find_group, only: [:new, :show, :create]
-	before_action :validate_file, only: [:create]
 
 	def create
-		file = params[:document][:text]
-		file_type = Document.parse_file_type(file.content_type)
-		title = params[:document][:title]
-		text = File.open(file.tempfile).read
-		@document = Document.new(title: title, text: text, file_type: file_type, group: @group)
+		@document = Document.new(document_params)
+		@document.group = @group
 		if @document.save
-			redirect_to group_document_path(@group, @document)
+			find_or_create_sentiment
+			render json: {
+				document: @document,
+				document_path: group_document_path(@group, @document),
+				sentiment: @document.sentiment.display_sentiment,
+				polarity_score: @document.sentiment.polarity_score,
+				sentiment_percentage: @document.sentiment.sentiment_percentage
+			}
 		else
 			redirect_to group_path(@group)
 		end
@@ -30,17 +33,11 @@ class DocumentsController < ApplicationController
 		@group = Group.find(params[:group_id])
 	end
 
-	def keyword_params
-		params.require(:document).permit(keyword:[:name])
+	def document_params
+		params.require(:document).permit(:text, :title)
 	end
 
 	def find_or_create_sentiment
-		 @document.sentiment || Parser.text_score(@document)
+		 Parser.text_score(@document)
 	end
-
-	def validate_file
-			redirect_to group_path(@group) unless params[:document][:text]
-			flash[:error] = "Please upload a file"
-	end
-
 end
