@@ -1,4 +1,8 @@
 $(document).ready(function() {
+  $('.forms').hide();
+  $('.btn').on('click', function(){
+    
+  })
   $('form.new_document').on('submit', app.documents.controllers.create.init)
 })
 
