@@ -8,15 +8,14 @@ class TwitterSearchesController < ApplicationController
 
   def create
     query = params[:twitter_search][:search_query]
-    language = params[:twitter_search][:language_code]
+    language = LanguageCode.find_by_name(params[:twitter_search][:language_code]).code
     result_type = params[:twitter_search][:result_type]
     tweet_count = params[:twitter_search][:tweet_count].to_i
 
     @twitter_search = TwitterSearch.new(twitter_search_params)
     @twitter_search.group = @group
-    tweets = TweetService.query_to_tweets(query, language, result_type, tweet_count)
-    tweet_objs = TweetService.create_tweets(tweets)
-    @twitter_search.tweets << tweet_objs
+    tweets = Adapters::TweetClient.new.find_tweets(query, language, result_type, tweet_count)
+    @twitter_search.tweets << tweets
 
     if @twitter_search.save
       find_or_create_sentiment
