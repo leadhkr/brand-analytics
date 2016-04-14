@@ -2501,8 +2501,6 @@ keywords = [
 [ "💯", [1]]
 ]
 
-#values = [ [1, 1], [2, 2], [3, 3], [4, 4], [5, 5], [0, 6], [-1, 7], [-2, 8], [-3, 9], [-4, 10], [-5, 11], [-0.5, 12], [0.5, 13], [2.5, 14]]
-
 
 keywords.each do |word, rating|
   Keyword.create(word: word, value_ids: rating)
