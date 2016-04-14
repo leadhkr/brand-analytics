@@ -30,6 +30,11 @@ class TwitterSearchesController < ApplicationController
     @tweets_information = Tweet.find_tweets(@twitter_search.id)
   end
 
+  def destroy
+    binding.pry
+    @twitter_search.destroy
+  end
+
   private
 
   def twitter_search_params

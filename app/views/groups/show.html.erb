@@ -4,14 +4,24 @@
   <h3><%= "Twitter Searches" if @group.twitter_searches.any? %></h3>
   <ol>
     <% @group.twitter_searches.each do |twitter_search| %>
-      <li><%= link_to twitter_search.search_query, group_twitter_search_path(@group, twitter_search) %></li>
+      <li id="<%= twitter_search.id %>">
+        <%= link_to twitter_search.search_query, group_twitter_search_path(@group, twitter_search) %>
+        <a href="#" class="rm-twitter" aria-hidden="true">
+          <img class="delete-icon" src="<%= asset_path('delete-icon.png') %>">
+        </a>
+      </li>
     <% end %>
   </ol>
 
   <h3><%= "Documents" if @group.documents.any? %></h3>
   <ol>
     <% @group.documents.each do |document| %>
-      <li><%= link_to document.title, group_document_path(@group, document) %></li>
+      <li id="<%= document.id %>">
+        <%= link_to document.title, group_document_path(@group, document) %>
+        <a href="#" class="rm-doc" aria-hidden="true">
+          <img class="delete-icon" src="<%= asset_path('delete-icon.png') %>">
+        </a>
+      </li>
     <% end %>
   </ol>
 </div>

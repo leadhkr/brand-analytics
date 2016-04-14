@@ -23,6 +23,11 @@ class DocumentsController < ApplicationController
 		find_or_create_sentiment
 	end
 
+	def destroy
+		@document.destroy
+		render json: @document
+	end
+
 	private
 
 	def find_document

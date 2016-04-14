@@ -56,3 +56,9 @@
 #group-modal {
   display: none;
 }
+
+.delete-icon {
+  height: 23px;
+  width: 23px;
+  opacity: 0.2;
+}
