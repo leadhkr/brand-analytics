@@ -39,9 +39,9 @@ class DocumentsController < ApplicationController
 	end
 
 	def validate_file
-		if params[:document][:text].nil? 
+		if params[:document][:text].nil?
 			redirect_to group_path(@group)
-			flash[:error] = "Please upload a file"			
+			flash[:error] = "Please upload a file"
 		end
 	end
 

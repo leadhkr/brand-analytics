@@ -19,6 +19,7 @@ class TwitterSearchesController < ApplicationController
     @twitter_search.tweets << tweet_objs
 
     if @twitter_search.save
+      find_or_create_sentiment
       redirect_to group_twitter_search_path(@group, @twitter_search)
     else
       redirect_to group_path(@group)
@@ -26,8 +27,8 @@ class TwitterSearchesController < ApplicationController
   end
 
   def show
-    find_or_create_sentiment
-
+    @average_sentiment = @twitter_search.average_sentiment
+    @tweets_information = Tweet.find_tweets(@twitter_search.id)
   end
 
   private

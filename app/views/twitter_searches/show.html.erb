@@ -1,14 +1,23 @@
-<h1><%= @twitter_search.search_query %></h1>
+<div class="col-md-12">
+  <h2><%= @twitter_search.search_query %></h2>
+  <h3>Overall Sentiment: <%= @average_sentiment %>%</h3>
 
+  <% @tweets_information.each do |tweet_info| %>
+    <div class="twitter-tweet">
+      <img src="<%= tweet_info.profile_image_url %>" class="twitter-profile-picture"/>
 
-<% @twitter_search.tweets.each do |tweet| %>
-  <img src="<%= tweet.profile_image_url %>"/>
-  <%= tweet.text %>
-  <%= tweet.sentiment.sentiment_percentage %>%
-  <%= tweet.sentiment.polarity_score %>
-  <%= tweet.sentiment.display_sentiment %>
-  <br />
-<% end %>
+      <div class="twitter-score">
+        Polarity Score: <%= tweet_info.polarity_score %></br>
+        Sentiment Percentage: <%= tweet_info.sentiment_percentage %>%
+      </div>
 
-<h2>Overall Sentiment</h2>
-<h2><%= @twitter_search.aggregate_sentiment %>%</h2>
+      <div class="twitter-username">
+        <%= tweet_info.name %>
+      </div>
+
+      <div class="twitter-text">
+        <%= tweet_info.text %>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -65,7 +65,7 @@ class Parser
   end
 
   def self.keyword_values
-    word_value_pairs = Keyword.joins(:values).pluck(:word, :rating) 
+    word_value_pairs = Keyword.joins(:values).pluck(:word, :rating)
     Hash[word_value_pairs]
   end
 end

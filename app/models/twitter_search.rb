@@ -7,18 +7,19 @@ class TwitterSearch < ActiveRecord::Base
 
   def parse_tweets
     tweets = Tweet.joins(:twitter_search).where(twitter_search_id: self.id)
-      tweets.map do |tweet|
+    tweets.map do |tweet|
       Parser.text_score(tweet)
     end
   end
 
   def sentiment_array
-    self.tweets.map do |tweet|
-      tweet.sentiment.sentiment_percentage
-    end
+    Tweet.find_tweets(self.id).to_a
   end
 
-  def aggregate_sentiment
-    sentiment_array.reduce(:+) / self.tweets.count
+  def average_sentiment
+    aggregate_score = sentiment_array.reduce(0) do |accumulator, element|
+      accumulator + element.sentiment_score
+    end
+    (aggregate_score / self.tweets.count).round(2)
   end
 end
