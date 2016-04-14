@@ -7,9 +7,7 @@ module Adapters
     end
 
     def find_tweets(query, language_code, result_type, tweet_count)
-      # 1. Connect to API
       tweets = connection.query(query, language_code, result_type).first(tweet_count)
-      # 2. Convert to Objects
       create_tweets(tweets)
     end
 
