@@ -1,4 +1,3 @@
-<div class="col-md-offset-2 col-md-8">
   <h4>Analyze Document</h4>
   <hr>
   <% if flash[:error] %>
@@ -8,20 +7,21 @@
       <%= flash[:error] %>
     </div>
   <% end %>
+  <div id="sentiment_analysis"></div>
+  <div id="document_form">
+    <%= form_for [@group, @document] do |f| %>
+    	<div class="form-group">
+    		<%= f.label :title, 'Title' %>
+    		<%= f.text_field :title, placeholder: 'Title', class: "form-control", placeholder: 'English' %>
+    	</div>
 
-  <%= form_for [@group, @document] do |f| %>
-  	<div class="form-group">
-  		<%= f.label :title, 'Title' %>
-  		<%= f.text_field :title, placeholder: 'Title', class: "form-control", placeholder: 'English' %>
-  	</div>
+    	<div class="form-group">
+    		<%= f.label :text, 'Text' %>
+    		<%= f.text_area :text, rows: 10, class: "form-control", value: "Bacon ipsum dolor amet strip steak pastrami tri-tip jowl ham hock ham drumstick. Shank flank beef ribs drumstick beef, tail cupim andouille kevin prosciutto. Beef ribs prosciutto swine kevin, pork chop ball tip brisket shoulder capicola bresaola meatball jerky. Swine fatback short loin, leberkas andouille pancetta short ribs picanha venison brisket pig. Pork chop alcatra andouille tail venison."  %>
+    	</div>
 
-  	<div class="form-group">
-  		<%= f.label :text, 'Text' %>
-  		<%= f.text_area :text, class: "form-control", value: "Bacon ipsum dolor amet strip steak pastrami tri-tip jowl ham hock ham drumstick. Shank flank beef ribs drumstick beef, tail cupim andouille kevin prosciutto. Beef ribs prosciutto swine kevin, pork chop ball tip brisket shoulder capicola bresaola meatball jerky. Swine fatback short loin, leberkas andouille pancetta short ribs picanha venison brisket pig. Pork chop alcatra andouille tail venison."  %>
-  	</div>
-
-    <div class="form-group">
-	     <%= f.submit "Submit Document", class: "btn btn-primary" %>
-    </div>
-  <% end %>
-</div>
+      <div class="form-group">
+  	     <%= f.submit "Submit Document", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>

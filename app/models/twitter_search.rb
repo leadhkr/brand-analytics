@@ -18,8 +18,21 @@ class TwitterSearch < ActiveRecord::Base
 
   def average_sentiment
     aggregate_score = sentiment_array.reduce(0) do |accumulator, element|
-      accumulator + element.sentiment_score
+      accumulator + element.sentiment_percentage
     end
     (aggregate_score / self.tweets.count).round(2)
   end
+
+
+
+  def display_average_sentiment
+    if self.average_sentiment > 0
+      "positive"
+    elsif self.average_sentiment < 0
+      "negative"
+    else
+      "neutral"
+    end
+  end
+
 end

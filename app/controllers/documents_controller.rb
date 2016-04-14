@@ -20,7 +20,6 @@ class DocumentsController < ApplicationController
 	end
 
 	def show
-		find_or_create_sentiment
 	end
 
 	private

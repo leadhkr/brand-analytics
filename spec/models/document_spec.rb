@@ -37,7 +37,7 @@ describe Document do
 			expect(document_one).to be_invalid
 		end
 
-		it 'is invalid if it\'s the wrong file type' do
+		it 'is valid if file type is allowed' do
 			expect(document_one).to be_valid
 		end
 
