@@ -22,6 +22,11 @@ class DocumentsController < ApplicationController
 	def show
 	end
 
+	def destroy
+		@document.destroy
+		render json: @document
+	end
+
 	private
 
 	def find_document
