@@ -23,8 +23,6 @@ class TwitterSearch < ActiveRecord::Base
     (aggregate_score / self.tweets.count).round(2)
   end
 
-
-
   def display_average_sentiment
     if self.average_sentiment > 0
       "positive"

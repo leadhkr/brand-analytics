@@ -3,10 +3,8 @@ $(document).ready(function() {
     $('#sentiment_analysis').empty();
     $('#document_form').show();
   }
-
   $('body').on('click', '#populate_doc_form', hideSentiment);
   $('#analyze').on('click', hideSentiment);
-  $('form.new_document').on('submit', app.documents.controllers.create.init)
   $('form.new_document').on('submit', app.documents.controllers.create.init)
   $('body').on('click', '.rm-doc', app.documents.controllers.destroy.init)
 })
@@ -32,8 +30,8 @@ app.documents.controllers = {
           </ul>
           <a class="btn btn-primary" href="`+ data.document_path +`" role="button">See Full Analysis</a>
           <div class="btn btn-primary" id="populate_doc_form" role="button">Analyze New Document</div>
-        </p>
-        `
+        </p>`
+
         $('#document_form').hide();
         $('#sentiment_analysis').append(stuff);
       })

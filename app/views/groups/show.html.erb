@@ -1,4 +1,3 @@
-
 <div class="col-md-offset-2 col-md-8">
   <h3><%= "Twitter Searches" if @group.twitter_searches.any? %></h3>
   <ol>
@@ -23,33 +22,29 @@
       </li>
     <% end %>
   </ol>
-  <br />
+  <br/>
 
-    <!-- Button trigger modal -->
   <button class="btn btn-lg btn-primary" id="analyze" data-toggle="modal" data-target="#forms">Analyze!</button>
-
 </div>
-
 
 <div class="modal fade" tabindex="-1" role="dialog" id="forms">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
- <!-- Nav tabs -->
-    <ul class="nav nav-tabs" role="tablist">
-      <li role="presentation" class="active"><a href="#twitter_search" aria-controls="home" role="tab" data-toggle="tab">Analyze Twitter Data</a></li>
-      <li role="presentation"><a href="#document" aria-controls="profile" role="tab" data-toggle="tab">Analyze Document</a></li>
-    </ul>
-    <div class="tab-content"> 
-     <div role="tabpanel" class="tab-pane active" id="twitter_search">   
-      <%= render 'shared/twitter_searches_form' %>
-     </div>
-     <div role="tabpanel" class="tab-pane" id="document">       
-      <%= render 'shared/document_form' %>
-    </div>
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#twitter_search" aria-controls="home" role="tab" data-toggle="tab">Analyze Twitter Data</a></li>
+          <li role="presentation"><a href="#document" aria-controls="profile" role="tab" data-toggle="tab">Analyze Document</a></li>
+        </ul>
+
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="twitter_search">
+            <%= render 'shared/twitter_searches_form' %>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="document">
+          <%= render 'shared/document_form' %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
 </div>

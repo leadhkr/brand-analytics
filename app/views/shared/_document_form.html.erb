@@ -12,12 +12,12 @@
     <%= form_for [@group, @document] do |f| %>
     	<div class="form-group">
     		<%= f.label :title, 'Title' %>
-    		<%= f.text_field :title, placeholder: 'Title', class: "form-control", placeholder: 'English' %>
+    		<%= f.text_field :title, placeholder: 'Title', class: "form-control", placeholder: 'Title' %>
     	</div>
 
     	<div class="form-group">
     		<%= f.label :text, 'Text' %>
-    		<%= f.text_area :text, rows: 10, class: "form-control", value: "Bacon ipsum dolor amet strip steak pastrami tri-tip jowl ham hock ham drumstick. Shank flank beef ribs drumstick beef, tail cupim andouille kevin prosciutto. Beef ribs prosciutto swine kevin, pork chop ball tip brisket shoulder capicola bresaola meatball jerky. Swine fatback short loin, leberkas andouille pancetta short ribs picanha venison brisket pig. Pork chop alcatra andouille tail venison."  %>
+    		<%= f.text_area :text, rows: 10, class: "form-control", placeholder: "Bacon ipsum dolor amet strip steak pastrami tri-tip jowl ham hock ham drumstick. Shank flank beef ribs drumstick beef, tail cupim andouille kevin prosciutto. Beef ribs prosciutto swine kevin, pork chop ball tip brisket shoulder capicola bresaola meatball jerky. Swine fatback short loin, leberkas andouille pancetta short ribs picanha venison brisket pig. Pork chop alcatra andouille tail venison."  %>
     	</div>
 
       <div class="form-group">
