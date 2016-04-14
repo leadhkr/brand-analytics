@@ -49,7 +49,6 @@ class Parser
     word_count.keys.each_with_object({}) do |word, value_hash|
       if keyword_count[word.downcase] || keyword_count[word]
         word == word.upcase ? value_hash[word] = word_count[word] * (keyword_count[word.downcase] * 2) : value_hash[word] = word_count[word] * keyword_count[word]
-        binding.pry
       end
     end
   end
