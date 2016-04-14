@@ -46,4 +46,12 @@ class Tweet < ActiveRecord::Base
   def self.limited_tweets(tweets, tweet_count)
     tweets.first(tweet_count)
   end
+
+  def most_positive_tweet_for_search(twitter_search)
+    Tweet.where("twitter_search_id = ?", twitter_search.id).joins(:sentiment).maximum(:sentiment_percentage)
+  end
+
+   def most_positive_tweet_for_search(twitter_search)
+    Tweet.where("twitter_search_id = ?", twitter_search.id).joins(:sentiment).minimum(:sentiment_percentage)
+  end 
 end
