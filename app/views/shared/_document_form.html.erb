@@ -9,6 +9,9 @@
   <% end %>
   <div id="sentiment_analysis"></div>
   <div id="document_form">
+    
+    <div class="alert alert-warning">
+    </div>
     <%= form_for [@group, @document] do |f| %>
     	<div class="form-group">
     		<%= f.label :title, 'Title' %>
