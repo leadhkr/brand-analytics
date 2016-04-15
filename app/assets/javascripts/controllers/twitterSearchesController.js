@@ -26,13 +26,12 @@ app.twitterSearches.controllers = {
       }).success(function(data) {
         var stuff = `<p>
           <ul>
-            <li>Sentiment Percentage:` + data.average_sentiment + `%</li>
             <li>Sentiment:` + data.display_sentiment + `</li>
+            <li>Sentiment Percentage:` + data.average_sentiment + `%</li>
           </ul>
           <a class="btn btn-primary" href="`+ data.twitter_search_path +`" role="button">See Full Analysis</a>
           <div class="btn btn-primary" id="populate_twitter_form" role="button">Analyze New Twitter Search</div>
         </p>`
-        
         $('#twitter_form').hide();
         $('#twitter_sentiment_analysis').append(stuff);
       })

@@ -25,13 +25,12 @@ app.documents.controllers = {
         var stuff = `<p>
           <ul>
             <li>Sentiment:` + data.sentiment + `</li>
-            <li>Sentiment:` + data.polarity_score + `</li>
-            <li>Sentiment:` + data.sentiment_percentage + `%</li>
+            <li>Polarity:` + data.polarity_score + `</li>
+            <li>Sentiment Percentage:` + data.sentiment_percentage + `%</li>
           </ul>
           <a class="btn btn-primary" href="`+ data.document_path +`" role="button">See Full Analysis</a>
           <div class="btn btn-primary" id="populate_doc_form" role="button">Analyze New Document</div>
         </p>`
-
         $('#document_form').hide();
         $('#sentiment_analysis').append(stuff);
       })
