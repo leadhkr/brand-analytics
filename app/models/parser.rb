@@ -19,7 +19,7 @@ class Parser
   private
 
   def self.strip_text(record)
-    record.text.gsub(/[#@,.:;?]/, '')
+    record.text.gsub(/[#@,.:;?"-]/, '')
   end
 
   def self.calculate_sentiment_percentage(split_text, sentiment_score)
@@ -48,14 +48,12 @@ class Parser
   def self.find_matches(word_count, keyword_count)
     word_count.keys.each_with_object({}) do |word, value_hash|
       sliced_word = word.slice(0, word.length-1) #slice off ! at end
-      if keyword_count[word.downcase] || keyword_count[word] || keyword_count[sliced_word] #check keyword list
-        if word == word.upcase #check if capitalized
-          value_hash[word] = word_count[word] * (keyword_count[word.downcase] * 2)
-        elsif keyword_count[sliced_word] && word[-1] == "!" #check word without exclamation point
-          value_hash[word] = word_count[word] * (keyword_count[sliced_word] * 2)
-        else
-          value_hash[word] = word_count[word] * keyword_count[word]
-        end
+      if word == word.upcase && keyword_count[word.downcase] #check if capitalized
+        value_hash[word] = word_count[word] * (keyword_count[word.downcase] * 2)
+      elsif keyword_count[sliced_word] && word[-1] == "!" #check word without exclamation point
+        value_hash[word] = word_count[word] * (keyword_count[sliced_word] * 2)
+      elsif keyword_count[word]
+        value_hash[word] = word_count[word] * keyword_count[word]
       end
     end
   end
