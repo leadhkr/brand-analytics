@@ -1,4 +1,5 @@
 var app = {
   documents: {},
-  twitterSearches: {}
+  twitterSearches: {},
+  users: {}
 }

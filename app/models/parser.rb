@@ -44,7 +44,6 @@ class Parser
     avg_p - avg_n
   end
 
-
   def self.find_matches(word_count, keyword_count)
     word_count.keys.each_with_object({}) do |word, value_hash|
       if keyword_count[word.downcase] || keyword_count[word]
