@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
   function resetForm() {
     $('#twitter_sentiment_analysis').empty();
     $('#twitter_form').show();
