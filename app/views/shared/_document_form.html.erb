@@ -1,16 +1,13 @@
   <h4>Analyze Document</h4>
   <hr>
-  <% if flash[:error] %>
-    <div class="alert alert-danger">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 
-      <%= flash[:error] %>
-    </div>
-  <% end %>
+  <div class="alert alert-danger">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  </div>
+
   <div id="sentiment_analysis"></div>
   <div id="document_form">
     
-    <div class="alert alert-warning">
     </div>
     <%= form_for [@group, @document] do |f| %>
     	<div class="form-group">
