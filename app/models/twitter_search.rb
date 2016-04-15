@@ -31,6 +31,7 @@ class TwitterSearch < ActiveRecord::Base
     elsif self.display_average_sentiment == 'neutral'
       'red-arrow.png'
     end
+  end
 
   def self.twitter_search_comparison(twitter_search)
     summed = search_sentiments(twitter_search)
