@@ -45,7 +45,6 @@ app.twitterSearches.controllers = {
     init: function(event) {
       event.preventDefault();
       var action = $(this).prev().prev().attr('href');
-      debugger;
       $.ajax({
         url: action,
         method: 'DELETE'
