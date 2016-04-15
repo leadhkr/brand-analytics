@@ -1,14 +1,14 @@
 $(document).ready(function() {
 
-  function resetForm() {
+function resetForm() {
     $('#twitter_sentiment_analysis').empty(); 
     $('#twitter_form').show();   
     $('#twitter_search_search_query').val('');     
     $('#twitter_search_description').val('');     
   }
-    $('body').on('click', '#populate_twitter_form', resetForm);
-    $('#analyze').on('click', resetForm);
-    $('form.new_twitter_search').on('submit', app.twitterSearches.controllers.create.init)
+  $('body').on('click', '#populate_twitter_form', resetForm);
+  $('#analyze').on('click', resetForm);
+  $('form.new_twitter_search').on('submit', app.twitterSearches.controllers.create.init)
 })
 
 

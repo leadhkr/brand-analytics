@@ -1,8 +1,5 @@
 $(document).ready(function() {
-  // $('.forms').hide();
-  // $('.btn').on('click', function(){
-  //   $('.forms').toggle();
-  // })
+
   function hideSentiment() {
     $('#sentiment_analysis').empty(); 
     $('#document_form').show();   

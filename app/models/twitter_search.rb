@@ -23,6 +23,24 @@ class TwitterSearch < ActiveRecord::Base
     (aggregate_score / self.tweets.count).round(2)
   end
 
+  def self.twitter_search_comparison(twitter_search)
+    summed = search_sentiments(twitter_search)
+    counted = search_sentiment_count(twitter_search)
+    average_sentiments(summed, counted)
+  end
+
+  def self.search_sentiments(twitter_search)
+    TwitterSearch.where(search_query: twitter_search.search_query).joins(tweets: :sentiment).group('twitter_searches.id').sum(:sentiment_percentage)
+  end
+
+  def self.search_sentiment_count(twitter_search)
+    TwitterSearch.where(search_query: twitter_search.search_query).joins(tweets: :sentiment).group('twitter_searches.id').count(:sentiment_percentage)
+  end
+
+  def self.average_sentiments(summed, counted)
+    averaged = summed.values.zip(counted.values).collect {|sum, count| sum / count}
+    summed.keys.zip(averaged).each_with_object({}) {|(id, averaged), averaged_hash| averaged_hash[id] = averaged }
+  end
 
 
   def display_average_sentiment

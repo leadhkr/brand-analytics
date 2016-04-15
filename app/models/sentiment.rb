@@ -10,9 +10,4 @@ class Sentiment < ActiveRecord::Base
       "neutral"
     end
   end
-
-  def self.sentiments_for_twitter_search
-    Sentiment.includes(record: :twitter_search).where(record_type: 'Tweet')
-  end
-
 end
