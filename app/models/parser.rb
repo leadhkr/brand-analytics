@@ -51,7 +51,7 @@ class Parser
       if keyword_count[word.downcase] || keyword_count[word] || keyword_count[sliced_word] #check keyword list
         if word == word.upcase #check if capitalized
           value_hash[word] = word_count[word] * (keyword_count[word.downcase] * 2)
-        elsif keyword_count[sliced_word]  #check word without exclamation point
+        elsif keyword_count[sliced_word] && word[-1] == "!" #check word without exclamation point
           value_hash[word] = word_count[word] * (keyword_count[sliced_word] * 2)
         else
           value_hash[word] = word_count[word] * keyword_count[word]
