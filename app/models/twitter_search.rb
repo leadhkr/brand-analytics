@@ -1,5 +1,5 @@
 class TwitterSearch < ActiveRecord::Base
-  has_many :tweets
+  has_many :tweets, dependent: :destroy
   belongs_to :group
 
   validates :search_query, presence: true
@@ -41,7 +41,6 @@ class TwitterSearch < ActiveRecord::Base
     averaged = summed.values.zip(counted.values).collect {|sum, count| sum / count}
     summed.keys.zip(averaged).each_with_object({}) {|(id, averaged), averaged_hash| averaged_hash[id] = averaged }
   end
-
 
   def display_average_sentiment
     if self.average_sentiment > 0

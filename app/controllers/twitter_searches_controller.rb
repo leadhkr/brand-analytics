@@ -1,5 +1,5 @@
 class TwitterSearchesController < ApplicationController
-  before_action :find_twitter_search, only: [:show]
+  before_action :find_twitter_search, only: [:show, :destroy]
   before_action :find_group, only: [:show, :create]
 
   def new
@@ -12,9 +12,10 @@ class TwitterSearchesController < ApplicationController
     result_type = params[:twitter_search][:result_type]
     tweet_count = params[:twitter_search][:tweet_count].to_i
     @twitter_search = TwitterSearch.new(twitter_search_params)
-    @twitter_search.group = @group    
+    @twitter_search.group = @group
     tweets = Adapters::TweetClient.new.find_tweets(query, language, result_type, tweet_count)
     @twitter_search.tweets << tweets
+
     if @twitter_search.save
       find_or_create_sentiment
       @average_sentiment = @twitter_search.average_sentiment
@@ -22,12 +23,8 @@ class TwitterSearchesController < ApplicationController
         twitter_search: @twitter_search,
         twitter_search_path: group_twitter_search_path(@group, @twitter_search),
         average_sentiment: @twitter_search.average_sentiment,
-        display_sentiment: @twitter_search.display_average_sentiment       
-        # sentiment: @document.sentiment.display_sentiment,
-        # polarity_score: @document.sentiment.polarity_score,
-        # sentiment_percentage: @document.sentiment.sentiment_percentage
-      }      
-      # redirect_to group_twitter_search_path(@group, @twitter_search)
+        display_sentiment: @twitter_search.display_average_sentiment
+      }
     else
       redirect_to group_path(@group)
     end
@@ -36,6 +33,11 @@ class TwitterSearchesController < ApplicationController
   def show
     @average_sentiment = @twitter_search.average_sentiment
     @tweets_information = Tweet.find_tweets(@twitter_search.id)
+  end
+
+  def destroy
+    @twitter_search.destroy
+    render json: @twitter_search
   end
 
   private

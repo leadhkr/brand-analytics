@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160414141310) do
+ActiveRecord::Schema.define(version: 20160414200105) do
 
   create_table "document_keywords", force: :cascade do |t|
     t.integer  "document_id"
@@ -79,7 +79,6 @@ ActiveRecord::Schema.define(version: 20160414141310) do
     t.string   "user_verified"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
-    t.integer  "document_id"
     t.string   "profile_image_url"
     t.string   "name"
     t.string   "location"
