@@ -4,6 +4,12 @@
     <% @group.twitter_searches.each do |twitter_search| %>
       <li id="<%= twitter_search.id %>">
         <%= link_to twitter_search.search_query, group_twitter_search_path(@group, twitter_search) %>
+        <% unless twitter_search.description.empty? %>
+        <div class="well well-sm">
+          <label> Description: </label>
+          <%= twitter_search.description %>
+        </div>
+        <% end %>
         <a href="#" class="rm-twitter" aria-hidden="true">
           <img class="delete-icon" src="<%= asset_path('delete-icon.png') %>">
         </a>

@@ -12,6 +12,7 @@
   padding: 10px;
   height: 150px;
   width: 460px;
+  background: white;
 }
 
 .twitter-tweet p {
@@ -61,4 +62,8 @@
   height: 23px;
   width: 23px;
   opacity: 0.2;
+}
+
+.modal-hover {
+  cursor: pointer;
 }

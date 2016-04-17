@@ -5,7 +5,7 @@ app.twitterSearches.model = {
     var twitterSearch = function TwitterSearch(searchQuery, description, group_id){
       this.searchQuery = searchQuery
       this.description = description
-      this.group = app.groups.model.findBy({id: group_id})
+    //this.group = app.groups.model.findBy({id: group_id})
       var that = this
 
       function initialize(){
@@ -16,10 +16,11 @@ app.twitterSearches.model = {
       initialize();
     }
 
-    twitterSearch.prototype.group = function(group_id){
-      return app.group.findBy({id: group_id})
-    }
-
-    return document;
+    return twitterSearch;
   }()),
+
+  validQuery: function(twitterSearch){
+    var regex = /^(#|@)/;
+    return regex.test(twitterSearch.searchQuery)
+  },  
 }

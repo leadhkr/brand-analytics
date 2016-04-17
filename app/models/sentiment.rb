@@ -3,11 +3,11 @@ class Sentiment < ActiveRecord::Base
 
   def display_sentiment
     if self.sentiment_score > 0
-      "positive"
+      "Positive"
     elsif self.sentiment_score < 0
-      "negative"
+      "Negative"
     else
-      "neutral"
+      "Neutral"
     end
   end
 end

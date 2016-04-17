@@ -1,23 +1,54 @@
 <div class="col-md-12">
   <h2><%= @twitter_search.search_query %></h2>
-  <h3>Overall Sentiment: <%= @average_sentiment %>%</h3>
+  <h3>Sentiment Percentage: <%= @average_sentiment %>%</h3>
+  <h3>Overall Sentiment: <%= @twitter_search.display_average_sentiment %></h3> 
 
   <% @tweets_information.each do |tweet_info| %>
+  <!-- Button trigger modal -->
     <div class="twitter-tweet">
-      <img src="<%= tweet_info.profile_image_url %>" class="twitter-profile-picture"/>
+      <div class="modal-hover" data-toggle="modal" data-target="#<%= tweet_info.id %>">
 
-      <div class="twitter-score">
-        Polarity Score: <%= tweet_info.polarity_score %></br>
-        Sentiment Percentage: <%= tweet_info.sentiment_percentage %>%
-      </div>
+        <img src="<%= tweet_info.profile_image_url %>" class="twitter-profile-picture"/>
 
-      <div class="twitter-username">
-        <%= tweet_info.name %>
-      </div>
+        <div class="twitter-score">
+          Polarity Score: <%= tweet_info.polarity_score %></br>
+          Sentiment Percentage: <%= tweet_info.sentiment_percentage %>%
+        </div>
 
-      <div class="twitter-text">
-        <%= tweet_info.text %>
+        <div class="twitter-username">
+          <%= tweet_info.name %>
+        </div>
+
+        <div class="twitter-text">
+          <%= tweet_info.text %>
+        </div>
       </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="<%=tweet_info.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="twitter-tweet">
+        
+           <img src="<%= tweet_info.profile_image_url %>" class="twitter-profile-picture"/>
+
+            <div class="twitter-score">
+              Polarity Score: <%= tweet_info.polarity_score %></br>
+              Sentiment Percentage: <%= tweet_info.sentiment_percentage %>%
+            </div>
+
+            <div class="twitter-username">
+              <%= tweet_info.name %>
+            </div>
+
+            <div class="twitter-text">
+              <%= tweet_info.text %>
+            </div>     
+
+        </div>
+      </div>
+    </div>
+
   <% end %>
 </div>
+

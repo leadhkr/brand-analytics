@@ -31,11 +31,11 @@ class TwitterSearch < ActiveRecord::Base
 
   def display_average_sentiment
     if self.average_sentiment > 0
-      "positive"
+      "Positive"
     elsif self.average_sentiment < 0
-      "negative"
+      "Negative"
     else
-      "neutral"
+      "Neutral"
     end
   end
 
