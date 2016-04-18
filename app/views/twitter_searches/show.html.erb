@@ -1,9 +1,7 @@
-<div id="word-cloud"></div>
-
 <div class="col-md-12">
-  <h2>Search Term: <%= @twitter_search.search_query %></h2>
+  <h2><%= @twitter_search.search_query %></h2>
   <h3>Sentiment Percentage: <%= @average_sentiment %>%</h3>
-  <h3>Overall Sentiment: <%= @twitter_search.display_average_sentiment %></h3>
+  <h3>Overall Sentiment: <%= @twitter_search.display_average_sentiment %></h3> 
 
   <% @tweets_information.each do |tweet_info| %>
   <!-- Button trigger modal -->
@@ -33,7 +31,7 @@
     <div class="modal fade" id="<%=tweet_info.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
         <div class="twitter-tweet">
-
+        
            <img src="<%= tweet_info.profile_image_url %>" class="twitter-profile-picture"/>
 
             <div class="twitter-score">
@@ -54,5 +52,7 @@
         </div>
       </div>
     </div>
+
   <% end %>
 </div>
+

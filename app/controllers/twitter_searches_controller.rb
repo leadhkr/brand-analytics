@@ -34,6 +34,7 @@ class TwitterSearchesController < ApplicationController
   def show
     @average_sentiment = @twitter_search.average_sentiment
     @tweets_information = Tweet.find_tweets(@twitter_search.id)
+    @keyword_value_hash = Parser.keyword_values
   end
 
   def destroy
