@@ -15,5 +15,6 @@
 //= require jquery-readyselector
 //= require bootstrap
 //= require d3.min
+//= require d3.layout.cloud
 //= require underscore
 //= require_tree .

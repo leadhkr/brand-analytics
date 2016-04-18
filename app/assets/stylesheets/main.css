@@ -171,3 +171,14 @@
   float: right;
   margin-right: 10px !important;
 }
+
+.twitter-search-sentiment-image {
+  height: 30px;
+  width: 30px;
+  vertical-align: middle;
+}
+
+.sentiment-percentage {
+  margin-top: 20px;
+  font-size: 32px;
+}

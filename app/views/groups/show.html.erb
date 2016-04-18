@@ -32,7 +32,7 @@
     <% @group.documents.each do |document| %>
       <li id="<%= document.id %>">
         <%= link_to document.title, group_document_path(@group, document) %>
-    
+
         <a href="#" class="rm-doc" aria-hidden="true">
           <img class="delete-icon" src="<%= asset_path('delete-icon.png') %>">
         </a>
