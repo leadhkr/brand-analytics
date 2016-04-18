@@ -1,40 +1,40 @@
-  <h4>Analyze Twitter Data</h4>
-  <hr>
-  <div id="twitter_sentiment_analysis"></div>
-  <div id="twitter_form">
-  <%= form_for [@group, @twitter_search] do |f| %>
-    <div class="form-group">
-      <%= f.label :search_query, "Twitter Search" %>
-      <%= f.text_field :search_query, placeholder: "Enter Twitter Handle or Hashtag", class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :description, "Description" %>
-      <%= f.text_area :description, placeholder: "Enter description of search...", class: "form-control" %>
-    </div>
-
-    <div class="dropdown form-group">
-      <%= f.label :language_code, "Language" %>
-      <%= f.collection_select :language_code, LanguageCode.all, :name, :name, {selected: 'English'}, {class: "form-control"} %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :tweet_count, "Tweet Count" %>
-      <%= f.number_field :tweet_count, value: 50, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= label_tag "Tweet Type" %><br/>
-      <%= f.radio_button :result_type, 'recent', checked: true, class: "radio-inline" %>
-      <%= f.label :result_type_recent, 'Recent' %>
-      <%= f.radio_button :result_type, 'popular', class: "radio-inline" %>
-      <%= f.label :result_type_popular, 'Popular' %>
-      <%= f.radio_button :result_type, 'mixed', class: "radio-inline" %>
-      <%= f.label :result_type_mixed, 'Mixed' %>
-    </div>
-
-    <div class="form-group">
-      <%= f.submit "Search Twitter", class: "btn btn-primary" %>
-    </div>
-  <% end %>
+<h4>Analyze Twitter Data</h4>
+<hr>
+<div id="twitter_sentiment_analysis"></div>
+<div id="twitter_form">
+<%= form_for [@group, @twitter_search] do |f| %>
+  <div class="form-group">
+    <%= f.label :search_query, "Twitter Search" %>
+    <%= f.text_field :search_query, placeholder: "Enter Twitter Handle or Hashtag", class: "form-control" %>
   </div>
+
+  <div class="form-group">
+    <%= f.label :description, "Description" %>
+    <%= f.text_area :description, placeholder: "Enter description of search...", class: "form-control" %>
+  </div>
+
+  <div class="dropdown form-group">
+    <%= f.label :language_code, "Language" %>
+    <%= f.collection_select :language_code, LanguageCode.all, :name, :name, {selected: 'English'}, {class: "form-control"} %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :tweet_count, "Tweet Count" %>
+    <%= f.number_field :tweet_count, value: 50, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag "Tweet Type" %><br/>
+    <%= f.radio_button :result_type, 'recent', checked: true, class: "radio-inline" %>
+    <%= f.label :result_type_recent, 'Recent' %>
+    <%= f.radio_button :result_type, 'popular', class: "radio-inline" %>
+    <%= f.label :result_type_popular, 'Popular' %>
+    <%= f.radio_button :result_type, 'mixed', class: "radio-inline" %>
+    <%= f.label :result_type_mixed, 'Mixed' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Search Twitter", class: "btn btn-primary" %>
+  </div>
+<% end %>
+</div>

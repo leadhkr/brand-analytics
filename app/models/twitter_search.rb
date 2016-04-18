@@ -17,10 +17,19 @@ class TwitterSearch < ActiveRecord::Base
   end
 
   def average_sentiment
-    aggregate_score = sentiment_array.reduce(0) do |accumulator, element|
-      accumulator + element.sentiment_percentage
-    end
+    aggregate_score = sentiment_array.reduce(0) { |accumulator, element| accumulator + element.sentiment_percentage }
     (aggregate_score / self.tweets.count).round(2)
+  end
+
+  def words_hash
+    words = sentiment_array.inject("") { |accumulator, element| accumulator + element.text }
+    split_words = Parser.words(words)
+    word_count = Parser.word_count(split_words)
+    keyword_count = Parser.keyword_values
+    results = Parser.find_matches(word_count, keyword_count)
+    results.map do |key, value|
+      {"text": key.downcase, "size": value.abs}
+    end
   end
 
   def sentiment_image

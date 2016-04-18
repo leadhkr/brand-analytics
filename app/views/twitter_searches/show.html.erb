@@ -1,5 +1,7 @@
+<div id="word-cloud"></div>
+
 <div class="col-md-12">
-  <h2><%= @twitter_search.search_query %></h2>
+  <h2>Search Term: <%= @twitter_search.search_query %></h2>
   <h3>Overall Sentiment: <%= @average_sentiment %>%</h3>
 
   <% @tweets_information.each do |tweet_info| %>

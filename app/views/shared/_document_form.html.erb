@@ -1,30 +1,31 @@
-  <h4>Analyze Document</h4>
-  <hr>
-  <% if flash[:error] %>
-    <div class="alert alert-danger">
+<h4>Analyze Document</h4>
+<hr>
+<% if flash[:error] %>
+  <div class="alert alert-danger">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <%= flash[:error] %>
+  </div>
+<% end %>
 
-      <%= flash[:error] %>
+<div id="sentiment_analysis"></div>
+
+<div id="document_form">
+
+  <div class="alert alert-warning">
+  </div>
+  <%= form_for [@group, @document] do |f| %>
+  	<div class="form-group">
+  		<%= f.label :title, 'Title' %>
+  		<%= f.text_field :title, placeholder: 'Title', class: "form-control", placeholder: 'Title' %>
+  	</div>
+
+  	<div class="form-group">
+  		<%= f.label :text, 'Text' %>
+  		<%= f.text_area :text, rows: 10, class: "form-control", placeholder: "Bacon ipsum dolor amet strip steak pastrami tri-tip jowl ham hock ham drumstick. Shank flank beef ribs drumstick beef, tail cupim andouille kevin prosciutto. Beef ribs prosciutto swine kevin, pork chop ball tip brisket shoulder capicola bresaola meatball jerky. Swine fatback short loin, leberkas andouille pancetta short ribs picanha venison brisket pig. Pork chop alcatra andouille tail venison."  %>
+  	</div>
+
+    <div class="form-group">
+	     <%= f.submit "Submit Document", class: "btn btn-primary" %>
     </div>
   <% end %>
-  <div id="sentiment_analysis"></div>
-  <div id="document_form">
-    
-    <div class="alert alert-warning">
-    </div>
-    <%= form_for [@group, @document] do |f| %>
-    	<div class="form-group">
-    		<%= f.label :title, 'Title' %>
-    		<%= f.text_field :title, placeholder: 'Title', class: "form-control", placeholder: 'Title' %>
-    	</div>
-
-    	<div class="form-group">
-    		<%= f.label :text, 'Text' %>
-    		<%= f.text_area :text, rows: 10, class: "form-control", placeholder: "Bacon ipsum dolor amet strip steak pastrami tri-tip jowl ham hock ham drumstick. Shank flank beef ribs drumstick beef, tail cupim andouille kevin prosciutto. Beef ribs prosciutto swine kevin, pork chop ball tip brisket shoulder capicola bresaola meatball jerky. Swine fatback short loin, leberkas andouille pancetta short ribs picanha venison brisket pig. Pork chop alcatra andouille tail venison."  %>
-    	</div>
-
-      <div class="form-group">
-  	     <%= f.submit "Submit Document", class: "btn btn-primary" %>
-      </div>
-    <% end %>
-  </div>
+</div>

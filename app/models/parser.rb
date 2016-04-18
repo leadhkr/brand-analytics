@@ -16,8 +16,6 @@ class Parser
     record.create_sentiment(sentiment_score: sentiment_score, polarity_score: polarity_score, sentiment_percentage: sentiment_percentage)
   end
 
-  private
-
   def self.strip_text(record)
     record.text.gsub(/[#@,.:;?"-]/, '')
   end
@@ -56,8 +54,6 @@ class Parser
       end
     end
   end
-
-
 
   def self.words(stripped_text)
     stripped_text.split(" ")

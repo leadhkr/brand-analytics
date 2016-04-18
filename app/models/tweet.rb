@@ -19,7 +19,6 @@ class Tweet < ActiveRecord::Base
   end
 
   def self.find_tweets(twitter_search_id)
-    self.select("text, name, favorite_count, retweets, tweet_date, user_verified, profile_image_url, location, sentiment_score, polarity_score, sentiment_percentage").joins(:sentiment).where("twitter_search_id = ?", twitter_search_id)
+    self.select("text, name, favorite_count, retweets, tweet_date, user_verified, profile_image_url, location, sentiment_score, polarity_score, sentiment_percentage").joins(:sentiment).where("twitter_search_id = ?", twitter_search_id).order('sentiment_percentage DESC')
   end
-
 end
