@@ -1,7 +1,6 @@
 module ApplicationHelper
-
   def get_value(word)
-    keyword = Keyword.find_by(word: word.downcase) 
+    keyword = Keyword.find_by(word: word.downcase)
     value = keyword.values.first.rating unless keyword.nil?
     keyword ? decorate_text(value, word) : word
   end
@@ -14,9 +13,8 @@ module ApplicationHelper
   def get_highlight_color(value)
     if value > 0
       value > 2 ? "success" : "positive"
-    else 
+    else
       value < -2.0 ? "danger" : "negative"
     end
   end
-
 end

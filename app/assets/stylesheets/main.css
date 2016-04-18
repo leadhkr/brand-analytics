@@ -159,3 +159,15 @@
 .pushdown {
   margin-top: 75px;
 }
+
+.section-secondary {
+  color: white;
+  background-color: #2E2E2E !important;
+}
+
+.profile-pic {
+  width: 7%;
+  height: 7%;
+  float: right;
+  margin-right: 10px !important;
+}
