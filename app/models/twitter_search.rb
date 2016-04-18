@@ -12,43 +12,47 @@ class TwitterSearch < ActiveRecord::Base
     end
   end
 
-  def sentiment_array
-    Tweet.find_tweets(self.id).to_a
-  end
-
   def average_sentiment
-    aggregate_score = sentiment_array.reduce(0) { |accumulator, element| accumulator + element.sentiment_percentage }
+    aggregate_score = tweets_array.reduce(0) { |accumulator, element| accumulator + element.sentiment_percentage }
     (aggregate_score / self.tweets.count).round(2)
   end
 
-  def words_hash
-    words = sentiment_array.inject("") { |accumulator, element| accumulator + element.text }
-    split_words = Parser.words(words)
+  def word_value_pairs
+    tweets_string = Parser.join_tweets(tweets_array)
+    split_words = Parser.words(tweets_string)
     word_count = Parser.word_count(split_words)
     keyword_count = Parser.keyword_values
     results = Parser.find_matches(word_count, keyword_count)
-    results.map do |key, value|
-      {"text": key.downcase, "size": value.abs}
-    end
+    results.map { |key, value| {"text": key.downcase, "size": value.abs * 10} }
   end
 
   def sentiment_image
-    if self.display_average_sentiment == 'positive'
+    if self.display_average_sentiment == 'Positive'
       'green-arrow.png'
-    elsif self.display_average_sentiment == 'negative'
+    elsif self.display_average_sentiment == 'Negative'
       'red-arrow.png'
-    elsif self.display_average_sentiment == 'neutral'
-      'red-arrow.png'
+    elsif self.display_average_sentiment == 'Neutral'
+      'neutral-arrow.png'
+    end
+  end
+
+  def sentiment_label
+    if self.display_average_sentiment == 'Positive'
+      'label label-success'
+    elsif self.display_average_sentiment == 'Negative'
+      'label label-danger'
+    elsif self.display_average_sentiment == 'Neutral'
+      'label label-default'
     end
   end
 
   def display_average_sentiment
     if self.average_sentiment > 0
-      "positive"
+      "Positive"
     elsif self.average_sentiment < 0
-      "negative"
+      "Negative"
     else
-      "neutral"
+      "Neutral"
     end
   end
 
@@ -59,6 +63,10 @@ class TwitterSearch < ActiveRecord::Base
   end
 
   private
+
+  def tweets_array
+    Tweet.find_tweets(self.id).to_a
+  end
 
   def search_sentiment_sum
     TwitterSearch.where(search_query: self.search_query).joins(tweets: :sentiment).group('twitter_searches.id').sum(:sentiment_percentage)

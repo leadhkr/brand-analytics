@@ -1,11 +1,41 @@
-<div class="col-md-12">
-  <h2><%= @document.title %></h1>
-  <h3>Overall Sentiment: <%= @document.sentiment.sentiment_percentage %> (<%= @document.sentiment.display_sentiment %>)</h3>
-  <h3>Polarity Score: <%= @document.sentiment.polarity_score %></h3>
+<div class="col-md-offset-2 col-md-8">
+  <!-- TOC -->
+  <div class='document-score'>
+    <span class="<%= @document.sentiment.sentiment_label %>">
+      <%= @document.title %>
+      <%= image_tag @document.sentiment.sentiment_image, class: 'twitter-search-sentiment-image' %>
+      <%= @document.sentiment.sentiment_percentage %>%
+    </span>
+  </div>
+  <div class="secondary-scores">
+    Polarity Score: <%= @document.sentiment.polarity_score %>
+  </div>
+  <hr>
 
-  <p>
+  <!-- SCORE TABLE -->
+  <div class="panel panel-default">
+    <div class="panel-heading data-header">Score Table</div>
+    <div class="panel-body">
+      <%= render  partial: "shared/score_table"  %>
+    </div>
+  </div>
+  <hr>
+
+  <!-- ANALYTICS -->
+  <div class="panel panel-default">
+    <div class="panel-heading data-header">Word Cloud</div>
+    <div class="panel-body">
+      <div id="word-cloud" data-document-search="<%= @document.id %>"></div>
+    </div>
+  </div>
+  <hr>
+
+  <!-- DOCUMENT TEXT -->
+    <button class="btn btn-primary tweet-toggle" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"> Show Document Text </button>
+
+  <div class="collapse document-textbox" id="collapseExample">
     <% @document.text.split.each do |word| %>
       <%= render  partial: "shared/word_highlighting", locals: {word: word}  %>
     <% end %>
-  </p>
+  </div><br><br>
 </div>

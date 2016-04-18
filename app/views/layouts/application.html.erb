@@ -11,8 +11,13 @@
   <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
   <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 </head>
-<body>
+<body class="<%= controller_name -%> <%= action_name -%>">
   <%= render 'shared/nav' %>
-  <%= yield %>
+  <div id="wrap">
+    <div id="main" class="container clear-top">
+      <%= yield %>
+    </div>
+  </div>
+
 </body>
 </html>

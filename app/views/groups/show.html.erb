@@ -1,46 +1,47 @@
-<div class="col-md-offset-2 col-md-8">
-  <h2><%= @group.name %></h2>
-  <hr>
-  <button class="btn btn-lg btn-primary btn-analyze" id="analyze" data-toggle="modal" data-target="#forms">+ Sentiment Analysis</button>
-  <div class="address-group"><%= @group.street_address %>, <%= @group.city %>, <%= @group.state %> <%= @group.zip_code %></div>
-</div>
+<h2><%= @group.name %></h2>
+<hr>
+<button class="btn btn-lg btn-primary btn-analyze" id="analyze" data-toggle="modal" data-target="#forms">+ Sentiment Analysis</button>
 
-<div class="col-md-offset-2 col-md-8">
-  <h4><%= "Twitter Searches" if @group.twitter_searches.any? %></h4>
-  <ol>
-    <% @group.twitter_searches.each do |twitter_search| %>
-      <li id="<%= twitter_search.id %>">
-        <%= link_to twitter_search.search_query, group_twitter_search_path(@group, twitter_search) %>
-        <img class="sentiment-img" src="<%= asset_path(twitter_search.sentiment_image) %>" alt="green-arrow">
-        <a href="#" class="rm-twitter" aria-hidden="true">
-          <img class="delete-icon" src="<%= asset_path('delete-icon.png') %>">
-        </a>
+<div class="address-group"><%= @group.street_address %>, <%= @group.city %>, <%= @group.state %> <%= @group.zip_code %></div>
+<br>
+<h3 class="group-label"><span class="label label-info"><%= "Twitter Searches" if @group.twitter_searches.any? %></span></h3>
+<ol>
+  <% @group.twitter_searches.each do |twitter_search| %>
+    <li id="<%= twitter_search.id %>">
+      <%= link_to twitter_search.search_query, group_twitter_search_path(@group, twitter_search) %>
+      <img class="sentiment-img" src="<%= asset_path(twitter_search.sentiment_image) %>">
+      <a href="#" class="rm-twitter" aria-hidden="true">
+        <img class="delete-icon" src="<%= asset_path('delete-icon.png') %>">
+      </a>
 
-        <% unless twitter_search.description.empty? %>
-        <div class="well well-sm">
-          <label> Description: </label>
-          <%= twitter_search.description %>
-        </div>
-        <% end %>
+      <% unless twitter_search.description.empty? %>
+      <div class="well well-sm">
+        <%= twitter_search.description %>
+      </div>
+      <% end %>
+    </li>
+  <% end %>
+</ol>
 
-      </li>
-    <% end %>
-  </ol>
+<h3 class="group-label"><span class="label label-info"><%= "Documents" if @group.documents.any? %></span></h3>
+<ol>
+  <% @group.documents.each do |document| %>
+    <li id="<%= document.id %>">
+      <%= link_to document.title, group_document_path(@group, document) %>
+      <img class="sentiment-img" src="<%= asset_path(document.sentiment.sentiment_image) %>">
+      <a href="#" class="rm-doc" aria-hidden="true">
+        <img class="delete-icon" src="<%= asset_path('delete-icon.png') %>">
+      </a>
 
- <h4><%= "Documents" if @group.documents.any? %></h4>
-  <ol>
-    <% @group.documents.each do |document| %>
-      <li id="<%= document.id %>">
-        <%= link_to document.title, group_document_path(@group, document) %>
-    
-        <a href="#" class="rm-doc" aria-hidden="true">
-          <img class="delete-icon" src="<%= asset_path('delete-icon.png') %>">
-        </a>
-      </li>
-    <% end %>
-  </ol>
-  <br/>
-</div>
+      <% unless document.text.empty? %>
+      <div class="well well-sm">
+        <%= document.snippet %>
+      </div>
+      <% end %>
+    </li>
+  <% end %>
+</ol>
+<br/>
 
 <div class="modal fade" tabindex="-1" role="dialog" id="forms">
   <div class="modal-dialog">

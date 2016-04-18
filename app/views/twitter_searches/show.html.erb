@@ -1,13 +1,38 @@
 <div class="col-md-12">
-  <h2><%= @twitter_search.search_query %></h2>
-  <h3>Sentiment Percentage: <%= @average_sentiment %>%</h3>
-  <h3>Overall Sentiment: <%= @twitter_search.display_average_sentiment %></h3> 
+  <!-- TOC -->
+  <div class="sentiment-percentage">
+    <span class="<%= @twitter_search.sentiment_label %>">
+      <%= @twitter_search.search_query %>
+      <%= image_tag @twitter_search.sentiment_image, class: 'twitter-search-sentiment-image' %>
+      <%= @average_sentiment %>%
+    </span>
+  </div>
+  <hr>
 
-  <% @tweets_information.each do |tweet_info| %>
-  <!-- Button trigger modal -->
-    <div class="twitter-tweet">
-      <div class="modal-hover" data-toggle="modal" data-target="#<%= tweet_info.id %>">
+  <!-- SCORE TABLE -->
+  <div class="panel panel-default">
+    <div class="panel-heading data-header">Score Table</div>
+    <div class="panel-body">
+      <%= render  partial: "shared/score_table"  %>
+    </div>
+  </div>
+  <hr>
 
+  <!-- ANALYTICS -->
+  <div class="panel panel-default">
+    <div class="panel-heading data-header">Word Cloud</div>
+    <div class="panel-body">
+      <div id="word-cloud" data-twitter-search="<%= @twitter_search.id %>"></div>
+    </div>
+  </div>
+  <hr>
+
+  <!-- TWEETS -->
+  <button class="btn btn-primary document-toggle" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"> Show Tweets </button>
+
+  <div class="collapse" id="collapseExample">
+    <% @tweets_information.each do |tweet_info| %>
+      <div class="twitter-tweet">
         <img src="<%= tweet_info.profile_image_url %>" class="twitter-profile-picture"/>
 
         <div class="twitter-score">
@@ -25,34 +50,6 @@
           <% end %>
         </div>
       </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="<%=tweet_info.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="twitter-tweet">
-        
-           <img src="<%= tweet_info.profile_image_url %>" class="twitter-profile-picture"/>
-
-            <div class="twitter-score">
-              Polarity Score: <%= tweet_info.polarity_score %><br />
-              Sentiment Percentage: <%= tweet_info.sentiment_percentage %>%
-            </div>
-
-            <div class="twitter-username">
-              <%= tweet_info.name %>
-            </div>
-
-            <div class="twitter-text">
-              <% tweet_info.text.split.each do |word| %>
-                <%= render partial: "shared/word_highlighting", locals: {word: word}  %>
-              <% end %>
-            </div>
-
-        </div>
-      </div>
-    </div>
-
-  <% end %>
+    <% end %>
+  </div>
 </div>
-

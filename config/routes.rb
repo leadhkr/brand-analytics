@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'home#index'
   get '/login', to: 'sessions#new'
   get '/register', to: 'users#new'
+  get '/wordcloud', to: 'word_clouds#show'
   delete '/logout', to: 'sessions#destroy'
 
   post '/documents', to: 'guests#create'  

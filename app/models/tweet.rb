@@ -8,6 +8,10 @@ class Tweet < ActiveRecord::Base
     tweets.inject(String.new) { |accumulator, element| accumulator + element.text }
   end
 
+  def self.find_tweets(twitter_search_id)
+    self.select("tweets.id, text, name, favorite_count, retweets, tweet_date, user_verified, profile_image_url, location, sentiment_score, polarity_score, sentiment_percentage").joins(:sentiment).where("twitter_search_id = ?", twitter_search_id)
+  end
+
   private
 
   def most_positive_tweet_for_search(twitter_search)
@@ -16,9 +20,5 @@ class Tweet < ActiveRecord::Base
 
    def most_negative_tweet_for_search(twitter_search)
     Tweet.where("twitter_search_id = ?", twitter_search.id).joins(:sentiment).minimum(:sentiment_percentage)
-  end
-
-  def self.find_tweets(twitter_search_id)
-    self.select("tweets.id, text, name, favorite_count, retweets, tweet_date, user_verified, profile_image_url, location, sentiment_score, polarity_score, sentiment_percentage").joins(:sentiment).where("twitter_search_id = ?", twitter_search_id)
   end
 end
