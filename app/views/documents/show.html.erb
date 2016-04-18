@@ -1,11 +1,18 @@
-<div class="col-md-12">
+<div class="col-md-offset-2 col-md-8">
   <h2><%= @document.title %></h1>
-  <h3>Overall Sentiment: <%= @document.sentiment.sentiment_percentage %> (<%= @document.sentiment.display_sentiment %>)</h3>
-  <h3>Polarity Score: <%= @document.sentiment.polarity_score %></h3>
 
-  <p>
+
+
+  <div class='document_score'>
+  <h3>Overall Sentiment: <%= @document.sentiment.sentiment_percentage %>% (<%= @document.sentiment.display_sentiment %>)</h3>
+  <h3>Polarity Score: <%= @document.sentiment.polarity_score %></h3>
+  <div>
+
+  <p class='document_text'>
     <% @document.text.split.each do |word| %>
       <%= render  partial: "shared/word_highlighting", locals: {word: word}  %>
     <% end %>
-  </p>
+  </p><br><br>
+
+  <%= render  partial: "shared/score_table" %>
 </div>
