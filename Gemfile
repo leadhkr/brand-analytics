@@ -12,6 +12,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 gem 'twitter'
 gem 'underscore-rails', '~> 1.8'
+
   group :development, :test do
   gem 'pry-byebug'
   gem 'sqlite3'
