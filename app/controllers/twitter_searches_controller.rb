@@ -1,6 +1,7 @@
 class TwitterSearchesController < ApplicationController
   before_action :find_twitter_search, only: [:show, :destroy]
   before_action :find_group, only: [:show, :create]
+  require 'json'
 
   def new
     @twitter_search = TwitterSearch.new

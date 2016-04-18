@@ -1,4 +1,4 @@
-<div class="col-md-offset-2 col-md-8">
+<div class="col-md-offset-2 col-md-8 pushdown">
   <!--  ERRORS -->
   <% if @user.errors.any? %>
     <ul>
@@ -8,7 +8,8 @@
     </ul>
   <% end %>
 
-  <!--  USER SIGN UP FORM -->
+  <!--  USER EDIT FORM -->
+  <h2>Edit Profile</h2>
   <%= form_for @user do |f| %>
     <div class="form-group"><%= f.text_field :first_name, placeholder: 'First Name', class: "form-control" %></div>
     <div class="form-group"><%= f.text_field :last_name, placeholder: 'Last Name', class: "form-control" %></div>

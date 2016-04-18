@@ -16,7 +16,6 @@ class Parser
     record.create_sentiment(sentiment_score: sentiment_score, polarity_score: polarity_score, sentiment_percentage: sentiment_percentage)
   end
 
-
   private
 
   def self.strip_text(record)
@@ -79,5 +78,4 @@ class Parser
     word_value_pairs = Keyword.joins(:values).pluck(:word, :rating)
     Hash[word_value_pairs]
   end
-
 end

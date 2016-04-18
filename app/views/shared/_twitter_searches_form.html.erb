@@ -1,8 +1,9 @@
-  <h4>Analyze Twitter Data</h4>
-  <hr>
-  <div id="twitter_sentiment_analysis"></div>
-  <div class="alert alert-query alert-danger"></div>
-  <div id="twitter_form">
+<h4>Analyze Twitter Data</h4>
+<hr>
+<div id="twitter_sentiment_analysis"></div>
+<div class="alert alert-query alert-danger"></div>
+
+<div id="twitter_form">
   <%= form_for [@group, @twitter_search] do |f| %>
     <div class="form-group">
       <%= f.label :search_query, "Twitter Search" %>
@@ -38,4 +39,4 @@
       <%= f.submit "Search Twitter", class: "btn btn-primary" %>
     </div>
   <% end %>
-  </div>
+</div>

@@ -7,7 +7,7 @@ $(document).ready(function() {
     $('#twitter_search_description').val('');
     app.twitterSearches.controllers.new.init()
   }
-  /*** Form Listeners ***/  
+  /*** Form Listeners ***/
   $('body').on('click', '#populate_twitter_form', setupTwitterSearch);
   $('#analyze').on('click', setupTwitterSearch);
   $('form.new_twitter_search').on('submit', app.twitterSearches.controllers.create.init)
@@ -22,7 +22,7 @@ app.twitterSearches.controllers = {
   new: {
     init: function(){
       new app.twitterSearches.model.new();
-    },  
+    },
     validateQuery: function() {
       var twitterSearch = _.last(app.twitterSearches.model.all)
       twitterSearch.searchQuery = $('#twitter_search_search_query').val();
@@ -32,7 +32,7 @@ app.twitterSearches.controllers = {
         $('.alert-query').append('Search must begin with a twitter handle (@) or hashtag (#)').show();
         $(this).css({"border-color": "#A94442"});
       }
-    }    
+    }
   },
   create: {
     init: function(event) {
@@ -55,12 +55,14 @@ app.twitterSearches.controllers = {
             <a class="btn btn-primary" href="`+ data.twitter_search_path +`" role="button">See Full Analysis</a>
             <div class="btn btn-primary" id="populate_twitter_form" role="button">Analyze New Twitter Search</div>
           </p>`
+          
           $('#twitter_form').hide();
           $('#twitter_sentiment_analysis').append(stuff);
         })
       }
     }
   },
+
   destroy: {
     init: function(event) {
       event.preventDefault();
