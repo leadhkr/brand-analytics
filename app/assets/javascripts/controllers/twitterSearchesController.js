@@ -50,7 +50,7 @@ app.twitterSearches.controllers = {
           var stuff = `<p>
             <ul>
             <li>Sentiment Percentage: ` + data.average_sentiment + `%</li>
-            <li>Overall Sentiment: ` + data.display_sentiment.charAt(0).toUpperCase() + data.display_sentiment.slice(1) + `</li>
+            <li>Overall Sentiment: ` + data.display_sentiment.charAt(0).toUpperCase() + data.display_sentiment.slice(1) + `</li>        
             </ul>
             <a class="btn btn-primary" href="`+ data.twitter_search_path +`" role="button">See Full Analysis</a>
             <div class="btn btn-primary" id="populate_twitter_form" role="button">Analyze New Twitter Search</div>
