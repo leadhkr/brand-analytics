@@ -24,7 +24,14 @@ class Parser
   end
 
   def self.calculate_sentiment_percentage(split_text, sentiment_score)
-    (sentiment_score / split_text.length * 100).to_i * 2
+    raw_score = (sentiment_score / split_text.length * 100).to_i * 2
+    if raw_score > 100
+      raw_score = 100
+    elsif raw_score < -100
+      raw_score = -100
+    else
+      raw_score
+    end
   end
 
   def self.sentiment_score(matched_values)
