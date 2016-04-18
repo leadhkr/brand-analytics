@@ -1,13 +1,24 @@
 <div class="col-md-12">
   <!-- TOC -->
   <div class="sentiment-percentage">
-    <%= @twitter_search.search_query %>
-    <%= image_tag @twitter_search.sentiment_image, class: 'twitter-search-sentiment-image' %>
-    <%= @average_sentiment %>%
+    <span class="<%= @twitter_search.sentiment_label %>">
+      <%= @twitter_search.search_query %>
+      <%= image_tag @twitter_search.sentiment_image, class: 'twitter-search-sentiment-image' %>
+      <%= @average_sentiment %>%
+    </span>
   </div>
   <hr>
 
-  <!-- WORD CLOUD -->
+  <!-- SCORE TABLE -->
+  <div class="panel panel-default">
+    <div class="panel-heading data-header">Score Table</div>
+    <div class="panel-body">
+      <%= render  partial: "shared/score_table"  %>
+    </div>
+  </div>
+  <hr>
+
+  <!-- ANALYTICS -->
   <div class="panel panel-default">
     <div class="panel-heading data-header">Word Cloud</div>
     <div class="panel-body">
@@ -17,7 +28,7 @@
   <hr>
 
   <!-- TWEETS -->
-  <button class="btn btn-primary tweet-toggle" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"> Show Tweets </button>
+  <button class="btn btn-primary document-toggle" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"> Show Tweets </button>
 
   <div class="collapse" id="collapseExample">
     <% @tweets_information.each do |tweet_info| %>

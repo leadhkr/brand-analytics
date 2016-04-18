@@ -32,7 +32,17 @@ class TwitterSearch < ActiveRecord::Base
     elsif self.display_average_sentiment == 'Negative'
       'red-arrow.png'
     elsif self.display_average_sentiment == 'Neutral'
-      'red-arrow.png'
+      'neutral-arrow.png'
+    end
+  end
+
+  def sentiment_label
+    if self.display_average_sentiment == 'Positive'
+      'label label-success'
+    elsif self.display_average_sentiment == 'Negative'
+      'label label-danger'
+    elsif self.display_average_sentiment == 'Neutral'
+      'label label-default'
     end
   end
 

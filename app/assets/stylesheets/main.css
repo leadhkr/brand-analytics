@@ -173,12 +173,78 @@
 }
 
 .twitter-search-sentiment-image {
-  height: 30px;
-  width: 30px;
+  height: 25px;
+  width: 25px;
   vertical-align: middle;
 }
 
-.sentiment-percentage {
+.sentiment-percentage, .document-score {
   margin-top: 20px;
   font-size: 32px;
+}
+
+.document {
+  padding: 20px;
+}
+
+.word-highlight {
+  float: left;
+  width: 15px;
+  height: 15px;
+  border: 1px solid rgba(0, 0, 0, .2);
+}
+
+.dark-red {
+  background: #D9534F;
+}
+
+.light-red {
+  background: #ff8581;
+}
+
+.dark-green {
+  background: #5CB85C;
+}
+
+.light-green {
+  background: #8eea8e;
+}
+
+#wrap {
+  min-height: 100%;
+}
+
+#main {
+  overflow: auto;
+  padding-bottom: 150px;
+}
+
+.footer {
+  position: relative;
+  margin-top: -150px;
+  height: 150px;
+  clear: both;
+  padding-top:20px;
+}
+
+ol {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.group-label {
+  margin-bottom: 20px !important;
+}
+
+.navbar-inverse {
+  background-color: #2E2E2E !important;
+}
+
+.document-textbox {
+  margin-top: 20px;
+}
+
+.secondary-scores {
+  margin-top: 10px;
+  font-weight: bold;
 }

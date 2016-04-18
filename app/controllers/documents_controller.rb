@@ -43,6 +43,6 @@ class DocumentsController < ApplicationController
 	end
 
 	def find_or_create_sentiment
-		 @Parser.text_score(@document)
+		 Parser.text_score(@document)
 	end
 end

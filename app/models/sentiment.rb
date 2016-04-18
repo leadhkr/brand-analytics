@@ -2,22 +2,32 @@ class Sentiment < ActiveRecord::Base
   belongs_to :record, polymorphic: true
 
   def sentiment_image
-    if self.display_sentiment == 'positive'
+    if self.display_sentiment == 'Positive'
       'green-arrow.png'
-    elsif self.display_sentiment == 'negative'
+    elsif self.display_sentiment == 'Negative'
       'red-arrow.png'
-    elsif self.display_sentiment == 'neutral'
-      'red-arrow.png'
+    elsif self.display_sentiment == 'Neutral'
+      'neutral-arrow.png'
+    end
+  end
+
+  def sentiment_label
+    if self.display_sentiment == 'Positive'
+      'label label-success'
+    elsif self.display_sentiment == 'Negative'
+      'label label-danger'
+    elsif self.display_sentiment == 'Neutral'
+      'label label-default'
     end
   end
 
   def display_sentiment
-    if self.sentiment_score > 0
-      "positive"
-    elsif self.sentiment_score < 0
-      "negative"
+    if self.sentiment_percentage > 0
+      "Positive"
+    elsif self.sentiment_percentage < 0
+      "Negative"
     else
-      "neutral"
+      "Neutral"
     end
   end
 
