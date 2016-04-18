@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get '/wordcloud', to: 'word_clouds#show'
   delete '/logout', to: 'sessions#destroy'
 
+  post '/documents', to: 'guests#create'  
+
   resources :users
   resources :keywords, only: [:create]
   resources :sessions, only: [:new, :create, :destroy]

@@ -35,7 +35,16 @@ describe Parser do
       sentiment = Parser.text_score(record)
       expect(sentiment.sentiment_score).to eq(-8.0)
       expect(sentiment.polarity_score).to eq(2)
+      expect(sentiment.sentiment_percentage).to eq(-100 )      
     end
+
+    it 'knows whether the text is negative, positive, or neutral' do
+      sentiment = Parser.text_score(record)
+      record2.text = "wtf. I was just joking"
+      sentiment2 = Parser.text_score(record2)   
+      expect(sentiment.display_sentiment).to eq('positive')
+      expect(sentiment2.display_sentiment).to eq('negative')
+    end    
 
     it 'never exceeds sensible sentiment percentages' do
       record.text = "VICTIMIZED blamed! 😡 😡"

@@ -21,4 +21,5 @@ class Tweet < ActiveRecord::Base
    def most_negative_tweet_for_search(twitter_search)
     Tweet.where("twitter_search_id = ?", twitter_search.id).joins(:sentiment).minimum(:sentiment_percentage)
   end
+
 end
