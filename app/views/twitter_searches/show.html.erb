@@ -2,8 +2,7 @@
 
 <div class="col-md-12">
   <h2><%= @twitter_search.search_query %></h2>
-  <h3>Sentiment Percentage: <%= @average_sentiment %>%</h3>
-  <h3>Overall Sentiment: <%= @twitter_search.display_average_sentiment %></h3>
+  <h3>Overall Sentiment: <%= @average_sentiment %>% (<%= @twitter_search.display_average_sentiment %>)</h3>
 
   <% @tweets_information.each do |tweet_info| %>
   <!-- Button trigger modal -->
@@ -54,4 +53,8 @@
       </div>
     </div>
   <% end %>
+</div>
+
+<div class="col-md-8">
+<%= render  partial: "shared/score_table"  %>
 </div>

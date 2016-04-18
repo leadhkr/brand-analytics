@@ -171,3 +171,30 @@
   float: right;
   margin-right: 10px !important;
 }
+
+.document {
+  padding: 20px;
+}
+
+.foo {
+  float: left;
+  width: 15px;
+  height: 15px;
+  border: 1px solid rgba(0, 0, 0, .2);
+}
+
+.dark-red {
+  background: #D9534F;
+}
+
+.light-red {
+  background: #ff8581;
+}
+
+.dark-green {
+  background: #5CB85C;
+}
+
+.light-green {
+  background: #8eea8e;
+}
