@@ -67,3 +67,93 @@
 .modal-hover {
   cursor: pointer;
 }
+
+.cover-image {
+  background-image: url('bg-image.jpg');
+}
+
+#logo-one, #logo-two {
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+}
+
+#logo-one {
+  color: #ffffff;
+}
+
+#logo-two {
+  color: #009cff;
+}
+
+.index-input {
+  height: 50px !important;
+  width: 250px !important;
+  opacity: 0.9 !important;
+  border: none !important;
+}
+
+.btn-size {
+  height: 50px !important;
+  width: 100px !important;
+  background-color: #009cff !important;
+}
+
+.input-right {
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.nav-links {
+  font-family: 'Roboto', sans-serif;
+  color: #ffffff;
+}
+
+.nav-links:hover {
+  color: #009cff;
+  background-color: transparent !important;
+}
+
+.jumbotron-text {
+  font-size: 48px;
+  font-family: 'Lato', sans-serif;
+  color: #ffffff;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+.user-signup-form, .user-log-in {
+  margin-top: 50px !important;
+  font-family: 'Lato', sans-serif !important;
+}
+
+.alert-box {
+  margin-top: 50px ;
+}
+
+.sentiment-img {
+  height: 15px;
+  width: 15px;
+}
+
+.address-group {
+  float: left;
+  color: #5b5959;
+  opacity: 0.5;
+  margin-right: 10px;
+}
+
+.btn-analyze {
+  float: right;
+}
+
+.label-positive {
+  background-color: #8eea8e;
+  color: #fff;
+}
+
+.label-negative {
+  background-color: #ff8581;
+  color: #fff;
+}
+
+

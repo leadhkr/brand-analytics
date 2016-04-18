@@ -23,21 +23,34 @@ class TwitterSearch < ActiveRecord::Base
     (aggregate_score / self.tweets.count).round(2)
   end
 
+
+  def sentiment_image
+    if self.display_average_sentiment == 'positive'
+      'green-arrow.png'
+    elsif self.display_average_sentiment == 'negative'
+      'red-arrow.png'
+    elsif self.display_average_sentiment == 'neutral'
+      'red-arrow.png'
+    end
+  end
+
+ 
+
+  def display_average_sentiment
+    if self.average_sentiment > 0
+      "positive"
+    elsif self.average_sentiment < 0
+      "negative"
+    else
+      "neutral"
+    end
+  end
+
   def twitter_search_comparison
     summed = search_sentiment_sum
     counted = tweet_count_for_search(summed)
     average_sentiments(summed, counted)
-  end
-
-  def display_average_sentiment
-    if self.average_sentiment > 0
-      "Positive"
-    elsif self.average_sentiment < 0
-      "Negative"
-    else
-      "Neutral"
-    end
-  end
+  end  
 
   private 
 

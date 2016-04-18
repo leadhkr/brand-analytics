@@ -20,7 +20,9 @@
         </div>
 
         <div class="twitter-text">
-          <%= tweet_info.text %>
+          <% tweet_info.text.split.each do |word| %>
+            <%= render  partial: "shared/word_highlighting", locals: {word: word}  %>
+          <% end %>
         </div>
       </div>
     </div>
@@ -33,7 +35,7 @@
            <img src="<%= tweet_info.profile_image_url %>" class="twitter-profile-picture"/>
 
             <div class="twitter-score">
-              Polarity Score: <%= tweet_info.polarity_score %></br>
+              Polarity Score: <%= tweet_info.polarity_score %><br />
               Sentiment Percentage: <%= tweet_info.sentiment_percentage %>%
             </div>
 
@@ -42,8 +44,10 @@
             </div>
 
             <div class="twitter-text">
-              <%= tweet_info.text %>
-            </div>     
+              <% tweet_info.text.split.each do |word| %>
+                <%= render partial: "shared/word_highlighting", locals: {word: word}  %>
+              <% end %>
+            </div>
 
         </div>
       </div>

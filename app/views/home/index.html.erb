@@ -1,1 +1,64 @@
-"NOT LOGGED IN" ==> Change to generic homepage
+<div class="cover">
+  <div class="navbar">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="<%= root_path %>"><span id="logo-one">tweet</span><span id="logo-two">alytics</span></a>
+      </div>
+      <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "Register", register_path, class: 'nav-links' %></li>
+          <li><%= link_to "Log In", login_path, class: 'nav-links' %></li>
+        </ul>
+      </div>
+    </div>
+  </div> <!-- END NAVBAR -->
+
+  <div class="cover-image"></div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <%= render 'shared/partial_signup' %>
+      </div>
+    </div>
+  </div>
+</div><!-- END JUMBOTRON -->
+
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <img src="http://pingendo.github.io/pingendo-bootstrap/assets/placeholder.png"
+        class="img-responsive">
+        <h2>A title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit,
+          <br>sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
+          <br>Ut enim ad minim veniam, quis nostrud</p>
+      </div>
+      <div class="col-md-3">
+        <img src="http://pingendo.github.io/pingendo-bootstrap/assets/placeholder.png"
+        class="img-responsive">
+        <h2>A title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit,
+          <br>sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
+          <br>Ut enim ad minim veniam, quis nostrud</p>
+      </div>
+      <div class="col-md-3">
+        <img src="http://pingendo.github.io/pingendo-bootstrap/assets/placeholder.png"
+        class="img-responsive img-rounded">
+        <h2>A title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit,
+          <br>sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
+          <br>Ut enim ad minim veniam, quis nostrud</p>
+      </div>
+      <div class="col-md-3">
+        <img src="http://pingendo.github.io/pingendo-bootstrap/assets/placeholder.png"
+        class="img-responsive">
+        <h2>A title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit,
+          <br>sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
+          <br>Ut enim ad minim veniam, quis nostrud</p>
+      </div>
+    </div>
+  </div>
+</div>

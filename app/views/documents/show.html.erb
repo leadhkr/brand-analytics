@@ -10,10 +10,6 @@
 <p>
 
   <% @document.text.split.each do |word| %>
-    <% if Parser.is_a_keyword?(word) %>
-      <span class="label label-primary"><%= word %></span>
-    <% else %>
-      <span><%= word %></span>
-    <% end %>
+    <%= render  partial: "shared/word_highlighting", locals: {word: word}  %>
   <% end %>
 </p>

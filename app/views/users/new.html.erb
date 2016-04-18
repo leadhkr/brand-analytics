@@ -8,7 +8,8 @@
 <% end %>
 
 <!--  USER SIGN UP FORM -->
-<div class="col-md-offset-3 col-md-6">
+<div class="col-md-offset-4 col-md-4 user-signup-form">
+  <h2>Register for an Account</h2>
   <%= form_for @user do |f| %>
     <div class="form-group">
       <%= f.text_field :first_name, placeholder: 'First Name', class: "form-control" %>
@@ -16,13 +17,6 @@
 
     <div class="form-group">
       <%= f.text_field :last_name, placeholder: 'Last Name', class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.radio_button :business_account, 'false', checked: true %>
-      <%= f.label :business_account_false, 'Personal' %>
-      <%= f.radio_button :business_account, 'true' %>
-      <%= f.label :business_account_true, 'Business' %>
     </div>
 
     <div class="form-group">
@@ -38,7 +32,7 @@
     </div>
 
     <div class="form-group">
-      <%= f.submit "Sign Up", class: "btn btn-primary" %>
+      <%= f.submit "Register", class: "btn btn-primary" %>
     </div>
   <% end %>
 </div>

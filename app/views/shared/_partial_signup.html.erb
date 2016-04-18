@@ -1,0 +1,13 @@
+<div class="jumbotron-text">Register for an Account</div>
+
+<div class="col-md-offset-2 col-md-8">
+  <%= form_tag new_user_path, method: 'GET' do %>
+    <div class="form-inline">
+      <div class="form-group">
+        <%= text_field_tag :first_name, nil, placeholder: 'First Name', class: "form-control index-input", autocomplete: :off %>
+        <%= text_field_tag :last_name, nil, placeholder: 'Last Name', class: "form-control index-input input-right", autocomplete: :off %>
+        <%= submit_tag 'Register', class: 'btn btn-primary btn-size' %>
+      </div>
+    </div>
+  <% end %>
+</div>

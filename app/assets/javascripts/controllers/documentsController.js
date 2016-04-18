@@ -77,7 +77,7 @@ app.documents.controllers = {
   destroy: {
     init: function(event){
       event.preventDefault();
-      var action = $(this).prev().attr('href');
+      var action = $(this).prev().prev().attr('href');
       $.ajax({
         url: action,
         method: 'DELETE'

@@ -16,10 +16,6 @@ class Parser
     record.create_sentiment(sentiment_score: sentiment_score, polarity_score: polarity_score, sentiment_percentage: sentiment_percentage)
   end
 
-  def self.is_a_keyword?(word)
-      Keyword.find_by(word: word)
-    # keyword.values.first.rating unless  keyword.nil?
-  end
 
   private
 
@@ -48,7 +44,6 @@ class Parser
     avg_n = negative_ratings.empty? ? total_negative : total_negative / negative_ratings.length
     avg_p - avg_n
   end
-
 
   def self.find_matches(word_count, keyword_count)
     word_count.keys.each_with_object({}) do |word, value_hash|
