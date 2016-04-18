@@ -3,5 +3,8 @@ class HomeController < ApplicationController
 
 	def index
 		redirect_to current_user.group if logged_in?
-	end
+    @twitter_search = TwitterSearch.new
+    @document = Document.new	
+  end
+
 end

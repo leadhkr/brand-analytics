@@ -16,7 +16,6 @@ class TwitterSearchesController < ApplicationController
     @twitter_search.group = @group
     tweets = Adapters::TweetClient.new.find_tweets(query, language, result_type, tweet_count)
     @twitter_search.tweets << tweets
-
     if @twitter_search.save
       find_or_create_sentiment
       @average_sentiment = @twitter_search.average_sentiment

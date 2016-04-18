@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get '/register', to: 'users#new'
   delete '/logout', to: 'sessions#destroy'
 
+  post '/documents', to: 'guests#create'  
+
   resources :users
   resources :keywords, only: [:create]
   resources :sessions, only: [:new, :create, :destroy]

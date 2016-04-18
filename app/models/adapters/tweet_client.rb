@@ -11,6 +11,10 @@ module Adapters
       create_tweets(tweets)
     end
 
+    def find_guest_tweets(query, language_code, result_type, tweet_count)
+      tweets = connection.query(query, language_code, result_type).first(tweet_count)    
+    end
+
     def create_tweets(tweets)
       tweets.map do |tweet|
         Tweet.new(
@@ -19,6 +23,8 @@ module Adapters
         ).tap { |current_tweet| current_tweet.save if current_tweet.valid? }
       end
     end
+
+
 
   end
 end
