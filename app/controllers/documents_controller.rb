@@ -20,6 +20,7 @@ class DocumentsController < ApplicationController
 	end
 
 	def show
+    @keyword_value_hash = Parser.keyword_values
 	end
 
 	def destroy
@@ -42,6 +43,6 @@ class DocumentsController < ApplicationController
 	end
 
 	def find_or_create_sentiment
-		 Parser.text_score(@document)
+		 @Parser.text_score(@document)
 	end
 end

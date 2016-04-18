@@ -1,7 +1,7 @@
 <div id="word-cloud" data-twitter-search="<%= @twitter_search.id %>"></div>
 
 <div class="col-md-12">
-  <h2>Search Term: <%= @twitter_search.search_query %></h2>
+  <h2><%= @twitter_search.search_query %></h2>
   <h3>Sentiment Percentage: <%= @average_sentiment %>%</h3>
   <h3>Overall Sentiment: <%= @twitter_search.display_average_sentiment %></h3>
 
@@ -50,7 +50,6 @@
                 <%= render partial: "shared/word_highlighting", locals: {word: word}  %>
               <% end %>
             </div>
-
         </div>
       </div>
     </div>
