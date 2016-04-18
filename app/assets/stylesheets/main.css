@@ -1,5 +1,7 @@
 .twitter-tweet {
-  float: left;
+  display:inline-block;
+  vertical-align:top;
+  text-align: left;
   font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
   font-size: 12px;
   line-height: 16px;
@@ -189,9 +191,10 @@
 
 .word-highlight {
   float: left;
-  width: 15px;
-  height: 15px;
-  border: 1px solid rgba(0, 0, 0, .2);
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  margin-right: 5px;
 }
 
 .dark-red {
@@ -242,9 +245,31 @@ ol {
 
 .document-textbox {
   margin-top: 20px;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .secondary-scores {
   margin-top: 10px;
   font-weight: bold;
+}
+
+#word-cloud {
+  text-align: center !important;
+}
+
+.navbar-right {
+  margin-right: 50px !important;
+}
+
+.panel-tweets {
+  text-align: center;
+}
+
+.panel-head {
+  margin-top: 20px;
+}
+
+.word-cloud-panel {
+  overflow: auto;
 }

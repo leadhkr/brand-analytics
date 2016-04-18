@@ -24,7 +24,7 @@
   <!-- ANALYTICS -->
   <div class="panel panel-default">
     <div class="panel-heading data-header">Word Cloud</div>
-    <div class="panel-body">
+    <div class="panel-body word-cloud-panel">
       <div id="word-cloud" data-document-search="<%= @document.id %>"></div>
     </div>
   </div>
@@ -34,8 +34,13 @@
     <button class="btn btn-primary tweet-toggle" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"> Show Document Text </button>
 
   <div class="collapse document-textbox" id="collapseExample">
-    <% @document.text.split.each do |word| %>
-      <%= render  partial: "shared/word_highlighting", locals: {word: word}  %>
-    <% end %>
+    <div class="panel panel-default">
+      <div class="panel-heading data-header">Document Text</div>
+      <div class="panel-body">
+        <% @document.text.split.each do |word| %>
+          <%= render  partial: "shared/word_highlighting", locals: {word: word}  %>
+        <% end %>
+      </div>
+    </div>
   </div><br><br>
 </div>

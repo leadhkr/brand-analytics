@@ -1,12 +1,7 @@
 module ApplicationHelper
-  # def get_keyword_value_list
-  #   word_value_pairs = Keyword.joins(:values).pluck(:word, :rating)
-  #   Hash[word_value_pairs]
-  # end
-
   def get_value(word)
     strip_word = word.downcase.gsub(/[#@,.:;?"-]/, '')
-    value = @keyword_value_hash[strip_word] 
+    value = @keyword_value_hash[strip_word]
     value ? decorate_text(value, word) : word
   end
 

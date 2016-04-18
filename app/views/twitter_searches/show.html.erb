@@ -31,25 +31,31 @@
   <button class="btn btn-primary document-toggle" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"> Show Tweets </button>
 
   <div class="collapse" id="collapseExample">
-    <% @tweets_information.each do |tweet_info| %>
-      <div class="twitter-tweet">
-        <img src="<%= tweet_info.profile_image_url %>" class="twitter-profile-picture"/>
+    <div class="panel panel-default panel-head">
+      <div class="panel-heading data-header">Tweets</div>
+        <div class="panel-body panel-inner-tweets panel-tweets">
+          <% @tweets_information.each do |tweet_info| %>
+            <div class="twitter-tweet">
+              <img src="<%= tweet_info.profile_image_url %>" class="twitter-profile-picture"/>
 
-        <div class="twitter-score">
-          Polarity Score: <%= tweet_info.polarity_score %></br>
-          Sentiment Percentage: <%= tweet_info.sentiment_percentage %>%
-        </div>
+              <div class="twitter-score">
+                Polarity Score: <%= tweet_info.polarity_score %></br>
+                Sentiment Percentage: <%= tweet_info.sentiment_percentage %>%
+              </div>
 
-        <div class="twitter-username">
-          <%= tweet_info.name %>
-        </div>
+              <div class="twitter-username">
+                <%= tweet_info.name %>
+              </div>
 
-        <div class="twitter-text">
-          <% tweet_info.text.split.each do |word| %>
-            <%= render  partial: "shared/word_highlighting", locals: {word: word}  %>
+              <div class="twitter-text">
+                <% tweet_info.text.split.each do |word| %>
+                  <%= render  partial: "shared/word_highlighting", locals: { word: word }  %>
+                <% end %>
+              </div>
+            </div>
           <% end %>
         </div>
       </div>
-    <% end %>
+    </div>
   </div>
 </div>
