@@ -25,14 +25,6 @@ FactoryGirl.define do
     password "testpassword"
     password_confirmation "testpassword"
 
-    trait :personal_account do
-      business_account false
-    end
-
-    trait :business_account do
-      business_account true
-    end
-
     trait :associated_group do
       group
     end

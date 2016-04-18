@@ -22,8 +22,6 @@ describe User do
 	let(:user_three) { build(:user, last_name: nil) }
 	let(:user_four) { build(:user, email: nil) }
 	let(:user_five) { build(:user, password: nil) }
-	let(:personal_user) { build(:user, :personal_account) }
-	let(:business_user) { build(:user, :business_account) }
 	let(:user_with_group) { build(:user, :associated_group) }
 
 	context 'validations:' do
@@ -52,16 +50,6 @@ describe User do
 		end
 	end
 
-	describe 'account type' do
-		it 'has a personal account' do
-			expect(personal_user.business_account).to eq(false)
-		end
-
-		it 'has a business account' do
-			expect(business_user.business_account).to eq(true)
-		end
-	end
-
 	describe 'has valid' do
 		it 'group' do
 			expect(user_with_group).to be_valid
@@ -81,15 +69,15 @@ describe User, '.find_group' do
 end
 
 # Test Instance Methods
-describe User, '#business_account?' do
-	let(:personal_user) { build(:user, :personal_account) }
-	let(:business_user) { build(:user, :business_account) }
-	
-	it 'defaults to false' do
-		expect(personal_user.business_account?).to be(false)
-	end
-
-	it 'returns true' do
-		expect(business_user.business_account?).to be(true)
-	end
-end
+# describe User, '#business_account?' do
+# 	let(:personal_user) { build(:user, :personal_account) }
+# 	let(:business_user) { build(:user, :business_account) }
+#
+# 	it 'defaults to false' do
+# 		expect(personal_user.business_account?).to be(false)
+# 	end
+#
+# 	it 'returns true' do
+# 		expect(business_user.business_account?).to be(true)
+# 	end
+# end

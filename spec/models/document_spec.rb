@@ -32,15 +32,6 @@ describe Document do
 			expect(document_one).to be_invalid
 		end
 
-		it 'is invalid if it\'s the wrong file type' do
-			document_one.file_type = "doc"
-			expect(document_one).to be_invalid
-		end
-
-		it 'is valid if file type is allowed' do
-			expect(document_one).to be_valid
-		end
-
 	end
 
 	describe 'associations' do
