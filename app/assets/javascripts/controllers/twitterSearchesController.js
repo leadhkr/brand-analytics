@@ -1,3 +1,12 @@
+$('.twitter_searches.show').ready(function() {
+  var twitterSearchId = $('#word-cloud').attr('data-twitter-search')
+  $.ajax({
+    method: 'GET',
+    data: { id: twitterSearchId },
+    url: "/wordcloud"
+  })
+})
+
 $(document).ready(function() {
 
   function setupTwitterSearch() {
@@ -55,7 +64,7 @@ app.twitterSearches.controllers = {
             <a class="btn btn-primary" href="`+ data.twitter_search_path +`" role="button">See Full Analysis</a>
             <div class="btn btn-primary" id="populate_twitter_form" role="button">Analyze New Twitter Search</div>
           </p>`
-          
+
           $('#twitter_form').hide();
           $('#twitter_sentiment_analysis').append(stuff);
         })

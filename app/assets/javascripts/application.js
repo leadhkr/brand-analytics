@@ -12,7 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-readyselector
 //= require bootstrap
 //= require d3.min
-//= require_tree .
 //= require underscore
+//= require_tree .
