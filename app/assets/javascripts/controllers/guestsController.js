@@ -26,8 +26,8 @@ app.guests.controllers = {
             if (!app.documents.model.validText(document)) {
               $('.alert-text').append('For an accurate analysis, text must be longer than 5 characters').show();
               $(this).css({"border-color": "#A94442"});
-            }      
-          }        
+            }
+          }
       }
   },
   create: {
@@ -44,18 +44,12 @@ app.guests.controllers = {
             method: 'POST',
             data: information
           }).success(function(data) {
-            var stuff = `<p>
-              <ul>
-                <li>Sentiment: ` + data.sentiment + `</li>
-                <li>Polarity: ` + data.polarity_score + `</li>
-                <li>Sentiment Percentage: ` + data.sentiment_percentage + `%</li>
-              </ul>
-              <a class="btn btn-primary" href="/register" role="button">Sign Up for a Full Analysis</a>
-            </p>`
+            var stuff = "<p><ul><li>Sentiment: " + data.sentiment + "</li><li>Polarity: " + data.polarity_score + "</li><li>Sentiment Percentage: " + data.sentiment_percentage + "%</li></ul><a class='btn btn-primary' href='/register' role='button'>Sign Up for a Full Analysis</a</p>"
+            
             $('#new_guest_document').hide();
             $('#sentiment_analysis').append(stuff);
           })
-        }      
+        }
       }
     }
   }

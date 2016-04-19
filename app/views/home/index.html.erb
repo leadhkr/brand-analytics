@@ -7,7 +7,7 @@
       </div>
       <div class="collapse navbar-collapse" id="navbar-ex-collapse">
         <ul class="nav navbar-nav navbar-right">
-          <button class="btn btn-primary btn-demo" id="analyze" data-toggle="modal" data-target="#forms">Demo</button>        
+          <button class="btn btn-primary btn-demo" id="analyze" data-toggle="modal" data-target="#forms">Demo</button>
           <li><%= link_to "Register", register_path, class: 'nav-links' %></li>
           <li><%= link_to "Log In", login_path, class: 'nav-links' %></li>
         </ul>
@@ -24,9 +24,12 @@
       </div>
 
     </div>
- 
+
   </div>
 </div><!-- END JUMBOTRON -->
+
+<%= render 'shared/footer' %>
+
 <!-- DEMO MODAL-->
 <div class="modal fade" tabindex="-1" role="dialog" id="forms">
   <div class="modal-dialog">

@@ -9,9 +9,9 @@ $('.twitter_searches.show').ready(function() {
 
     var color = d3.scale.linear()
       .domain([0,1,2,3,4,5,6,10,15,20,100])
-      .range(["#1A75FF", "#0066FF", "#0066FF", "#005CE5", "#0052CB", "#0048B1", "#003E97", "#00347D", "#002A63", "#002049", "#00162F", "#000C15"]);
+      .range(["#ddd", "#ccc", "#bbb", "#aaa", "#999", "#888", "#777", "#666", "#555", "#444", "#333", "#222"]);
 
-    d3.layout.cloud().size([800, 300])
+    d3.layout.cloud().size([500, 300])
       .words(frequency_list)
       .rotate(0)
       .fontSize(function(d) { return d.size; })
@@ -87,14 +87,7 @@ app.twitterSearches.controllers = {
           method: 'POST',
           data: information
         }).success(function(data) {
-          var stuff = `<p>
-            <ul>
-            <li>Sentiment Percentage: ` + data.average_sentiment + `%</li>
-            <li>Overall Sentiment: ` + data.display_sentiment.charAt(0).toUpperCase() + data.display_sentiment.slice(1) + `</li>        
-            </ul>
-            <a class="btn btn-primary" href="`+ data.twitter_search_path +`" role="button">See Full Analysis</a>
-            <div class="btn btn-primary" id="populate_twitter_form" role="button">Analyze New Twitter Search</div>
-          </p>`
+            var stuff = "<p><ul><li>Sentiment Percentage: " + data.average_sentiment + "%</li><li>Overall Sentiment: " + data.display_sentiment.charAt(0).toUpperCase() + data.display_sentiment.slice(1) + "</li> </ul><a class='btn btn-primary btn-modal' href='" + data.twitter_search_path + "' role='button'>See Full Analysis</a><div class='btn btn-primary btn-modal' id='populate_twitter_form' role='button'>Analyze New Twitter Search</div</p>"
 
           $('#twitter_form').hide();
           $('#twitter_sentiment_analysis').append(stuff);

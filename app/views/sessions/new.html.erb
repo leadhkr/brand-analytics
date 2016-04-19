@@ -1,8 +1,12 @@
-<!-- ERRORS -->
-<%= flash.now[:errors] %>
-
 <!-- LOGIN FORM -->
 <div class="col-md-offset-4 col-md-4 user-log-in">
+  <!-- ERRORS -->
+  <% if flash.now[:errors] %>
+    <div class="alert alert-danger">
+      <%= flash.now[:errors] %>
+    </div>
+  <% end %>
+
   <h2>Log In</h2>
   <%= form_tag sessions_path do %>
     <div class="form-group">

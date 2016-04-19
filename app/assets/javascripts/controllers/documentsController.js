@@ -9,9 +9,9 @@ $('.documents.show').ready(function() {
 
     var color = d3.scale.linear()
       .domain([0,1,2,3,4,5,6,10,15,20,100])
-      .range(["#1A75FF", "#0066FF", "#0066FF", "#005CE5", "#0052CB", "#0048B1", "#003E97", "#00347D", "#002A63", "#002049", "#00162F", "#000C15"]);
+      .range(["#ddd", "#ccc", "#bbb", "#aaa", "#999", "#888", "#777", "#666", "#555", "#444", "#333", "#222"]);
 
-    d3.layout.cloud().size([800, 300])
+    d3.layout.cloud().size([500, 300])
       .words(frequency_list)
       .rotate(0)
       .fontSize(function(d) { return d.size; })
@@ -98,15 +98,8 @@ app.documents.controllers = {
           method: 'POST',
           data: information
         }).success(function(data) {
-          var stuff = `<p>
-            <ul>
-              <li>Sentiment: ` + data.sentiment + `</li>
-              <li>Polarity: ` + data.polarity_score + `</li>
-              <li>Sentiment Percentage: ` + data.sentiment_percentage + `%</li>
-            </ul>
-            <a class="btn btn-primary" href="`+ data.document_path +`" role="button">See Full Analysis</a>
-            <div class="btn btn-primary" id="populate_doc_form" role="button">Analyze New Document</div>
-          </p>`
+          var stuff = "<p><ul><li>Sentiment: " + data.sentiment + "</li><li>Polarity: " + data.polarity_score + "</li><li>Sentiment Percentage: " + data.sentiment_percentage + "%</li></ul><a class='btn btn-primary btn-modal' href='"+ data.document_path +"' role='button'>See Full Analysis</a><div class='btn btn-primary btn-modal' id='populate_doc_form' role='button'>Analyze New Document</div></p>"
+          
           $('#document_form').hide();
           $('#sentiment_analysis').append(stuff);
         })
