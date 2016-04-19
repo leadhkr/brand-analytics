@@ -71,7 +71,7 @@
 }
 
 .cover-image {
-  background-image: url('bg-image.jpg');
+  background-image: url(image-path('bg-image.jpg'))
 }
 
 #logo-one, #logo-two {
@@ -175,7 +175,7 @@
 }
 
 .btn-demo {
-  font-family: 'Roboto', sans-serif;  
+  font-family: 'Roboto', sans-serif;
   float: left;
   height: 35px;
   width: 80px;
