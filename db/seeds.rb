@@ -2521,7 +2521,7 @@ groups = [
 
 groups.each do |group_array|
   Group.create(
-    name: group_array[0], street_address: Faker::Address.street_address, city: Faker::Address.city,
-    state: Faker::Address.state, zip_code: Faker::Address.zip.to_i, domain: group_array[1]
+    name: group_array[0], street_address: '123 Main Street', city: 'Palo Alto',
+    state: 'CA', zip_code: 94302, domain: group_array[1]
   )
 end
