@@ -1,4 +1,14 @@
 $(document).ready(function() {
+  function setupDemo() {
+  $('#sentiment_analysis').empty();
+  $('#new_guest_document').show();
+  $('#document_title').val('');
+  $('#document_text').val('');
+  $('.alert').hide();
+  app.documents.controllers.new.documents.init()
+}
+
+  $('.btn-demo').on('click', setupDemo)
   $('form#new_guest_document').on('submit', app.guests.controllers.create.documents.init);
 })
 
