@@ -16,7 +16,9 @@
 
       <% unless twitter_search.description.empty? %>
       <div class="well well-sm">
-        <%= twitter_search.description %>
+        <div>Language: <%= twitter_search.language_code %></div>
+        <div>Tweets Queried: <%= twitter_search.tweet_count %></div>
+        <div>Description: <%= twitter_search.description %></div>
       </div>
       <% end %>
     </li>
