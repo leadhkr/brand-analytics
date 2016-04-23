@@ -94,7 +94,7 @@ In order to improve the overall accuracy of the sentiment scores, our next step 
 ## Authors
 
 * Sagar Patel: [LinkedIn](www.linkedin.com/in/patelsagar) | [GitHub](github.com/sagarpatel8384)
-* Leah Einhorn: [LinkedIn](https://www.linkedin.com/in/leah-einhorn-36b05831) | [GitHub](github.com/itsatype)
+* Leah Einhorn: [LinkedIn](https://www.linkedin.com/in/leaheinhorn) | [GitHub](github.com/itsatype)
 * Mindy Yuan: [LinkedIn](www.linkedin.com/in/mindy-yuan-53218044) | [GitHub](github.com/mindyyuan)
 
 ## License
