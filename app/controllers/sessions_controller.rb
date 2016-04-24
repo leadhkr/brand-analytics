@@ -10,8 +10,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to @user.group
     else
-      binding.pry
-      flash.now[:errors] = 'Email or Password is incorrect'
+      flash.now[:error] = 'Email or Password is incorrect'
       render 'new'
     end
   end

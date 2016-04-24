@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   def validate_user
     if current_user.id != params[:id].to_i
-      redirect_to current_user
+      redirect_to current_user.group
     end
   end
 

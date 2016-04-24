@@ -1,9 +1,9 @@
 <!-- LOGIN FORM -->
 <div class="col-md-offset-4 col-md-4 user-log-in">
   <!-- ERRORS -->
-  <% if flash.now[:errors] %>
+  <% if flash.now[:error] %>
     <div class="alert alert-danger">
-      <%= flash.now[:errors] %>
+      <%= flash.now[:error] %>
     </div>
   <% end %>
 

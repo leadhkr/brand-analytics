@@ -1,6 +1,12 @@
 <!--  USER SIGN UP FORM -->
 <div class="col-md-offset-4 col-md-4 user-signup-form">
   <!--  ERRORS -->
+  <% if flash[:error] %>
+    <div class="alert alert-danger">
+      <%= flash[:error] %>
+    </div>
+  <% end %>
+
   <% if @user.errors.any? %>
     <div class="alert alert-danger">
       <% @user.errors.full_messages.each do |msg| %>
