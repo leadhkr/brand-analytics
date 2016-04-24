@@ -2516,7 +2516,7 @@ lang_codes.each { |language_name, language_code| LanguageCode.create(name: langu
 
 groups = [
   ['Spotify', '@spotify.com'], ['Google', '@gmail.com'], ['Microsoft', '@microsoft.com'],
-  ['Apple', '@apple.com'], ['Facebook', '@facebook.com'], ['Amazon', '@amazon.com']
+  ['Apple', '@apple.com'], ['Facebook', '@facebook.com'], ['Amazon', '@amazon.com'],
 ]
 
 groups.each do |group_array|
@@ -2524,4 +2524,24 @@ groups.each do |group_array|
     name: group_array[0], street_address: '123 Main Street', city: 'Palo Alto',
     state: 'CA', zip_code: 94302, domain: group_array[1]
   )
+end
+
+# CAMPUS DRAFT
+
+draft = [['Blackrock', '@blackrock.com'], ['New York Times', '@nytimes.com'],
+  ['StreetEasy', '@streeteasy.com'], ['Visual Image Display', '@visualimagedisplay.com'], ['IBM', '@ibm.com']
+]
+
+@blackrock = Group.create(name: draft[0][0], street_address: '40 East 52nd Street', city: 'New York', state: 'NY', zip_code: 10022, domain: draft[0][1])
+@nytimes = Group.create(name: draft[1][0], street_address: '620 Eighth Avenue', city: 'New York', state: 'NY', zip_code: 10018, domain: draft[1][1])
+@streeteasy = Group.create(name: draft[2][0], street_address: '130 5th Ave', city: 'New York', state: 'NY', zip_code: 10011, domain: draft[2][1])
+@vid = Group.create(name: draft[3][0], street_address: '150 Coolidge Ave.', city: 'Englewood', state: 'NJ', zip_code: 07631, domain: draft[3][1])
+@ibm = Group.create(name: draft[4][0], street_address: '1 New Orchard Road', city: 'Armonk', state: 'NY', zip_code: 10504, domain: draft[4][1])
+
+campus_draft_groups = [@blackrock, @nytimes, @streeteasy, @vid, @ibm]
+
+campus_draft_groups.each do |company|
+  user = User.create(first_name: 'Sagar', last_name: 'Patel', email: "sagar#{company.domain}", password: 'testpassword',password_confirmation: 'testpassword')
+  user.group = company
+  user.save
 end

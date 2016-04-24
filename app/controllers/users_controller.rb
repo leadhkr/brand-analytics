@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   skip_before_action :authorized?, only: [:new, :create]
 
   def new
+    # Params from AJAX Request to Autofill Name on Registration Page
     @user = User.new(first_name: params[:first_name], last_name: params[:last_name])
   end
 

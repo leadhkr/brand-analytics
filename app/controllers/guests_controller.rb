@@ -1,7 +1,5 @@
 class GuestsController < ApplicationController
-
   skip_before_action :authorized?, only: [:create]
-
 
   def create
     @document = Document.new(document_params)
@@ -18,11 +16,8 @@ class GuestsController < ApplicationController
   def document_params
     params.require(:document).permit(:text, :title)
   end
- 
 
   def find_or_create_sentiment
    Parser.text_score(@document)
   end
-
-
 end
