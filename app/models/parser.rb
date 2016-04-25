@@ -21,21 +21,28 @@ class Parser
 
   def self.word_count(split_text)
     split_text.each_with_object(Hash.new(0)) do |word, word_count|
+      # Separated in order to account for words that are all caps vs. first letter is capitalized
+      # { 'good' => 1, 'GOOD' => 2 }
       word.upcase == word ? word_count[word] += 1 : word_count[word.downcase] += 1
     end
   end
 
   def self.keyword_values
+    # Returns a collection of keywords and associated values
     word_value_pairs = Keyword.joins(:values).pluck(:word, :rating)
+    # Creates a Hash of keyword and value pairs
     Hash[word_value_pairs]
   end
 
   def self.find_matches(word_count, keyword_count)
+    # ['good', 'GOOD']
     word_count.keys.each_with_object({}) do |word, value_hash|
-      sliced_word = word.slice(0, word.length - 1) #slice off ! at end
-      if word == word.upcase && keyword_count[word.downcase] #check if capitalized
+      sliced_word = word.slice(0, word.length - 1) # slice off ! at end
+      if word == word.upcase && keyword_count[word.downcase] # check if capitalized
+        # find downcased keyword value and add multiplier for upcased word
         value_hash[word] = word_count[word] * (keyword_count[word.downcase] * 2)
-      elsif keyword_count[sliced_word] && word[-1] == "!" #check word without exclamation point
+      elsif keyword_count[sliced_word] && word[-1] == "!" # check word without exclamation point
+        # find keyword value and add multiplier for exclamation points
         value_hash[word] = word_count[word] * (keyword_count[sliced_word] * 2)
       elsif keyword_count[word]
         value_hash[word] = word_count[word] * keyword_count[word]
@@ -50,7 +57,9 @@ class Parser
   # SENTIMENT SCORE METHODS
 
   def self.calculate_sentiment_percentage(split_text, sentiment_score)
+    # Raw Score multiplied by two to blw out score for charting (d3)
     raw_score = (sentiment_score / split_text.length * 100).to_i * 2
+    # Normalize blown out number to within 100 standard deviation of 0
     if raw_score > 100
       raw_score = 100
     elsif raw_score < -100
@@ -65,16 +74,21 @@ class Parser
   end
 
   def self.split_polarity(matched_values)
+    # split array based on negative or positive values
     split_array = matched_values.partition { |rating| rating > 0 }
     positive_ratings, negative_ratings = split_array.first, split_array.last
   end
 
   def self.calculate_polarity(matched_values)
+    # two arrays of positive and negative values
     positive_ratings, negative_ratings = split_polarity(matched_values)
     total_positive = positive_ratings.reduce(:+) || 0
+    # calcualte average; total positive / array length of positives
     avg_p = positive_ratings.empty? ? total_positive : total_positive / positive_ratings.length
     total_negative = negative_ratings.reduce(:+) || 0
+    # calcualte average; total negative / array length of negatives
     avg_n = negative_ratings.empty? ? total_negative : total_negative / negative_ratings.length
+    # polarity
     avg_p - avg_n
   end
 

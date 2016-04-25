@@ -1,13 +1,3 @@
-# == Schema Information
-#
-# Table name: keywords
-#
-#  id         :integer          not null, primary key
-#  word       :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#
-
 class Keyword < ActiveRecord::Base
   has_many :document_keywords
   has_many :documents, through: :document_keywords
@@ -23,5 +13,4 @@ class Keyword < ActiveRecord::Base
   def self.least_used(group)
     self.joins(:documents).group('word').having(documents: {group_id: group.id}).order('count_word ASC').limit(5).count('word')
   end
-
 end

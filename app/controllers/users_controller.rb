@@ -4,17 +4,19 @@ class UsersController < ApplicationController
   skip_before_action :authorized?, only: [:new, :create]
 
   def new
+    # Params from AJAX Request to Autofill Name on Registration Page
     @user = User.new(first_name: params[:first_name], last_name: params[:last_name])
   end
 
   def create
     @user = User.new(new_user_params)
     @group = User.find_group(@user.email)
+    # Find Company and create user only if Company exists
     @user.group = @group if @group
 
     if @user.save && !@group.nil?
       session[:user_id] = @user.id
-      redirect_to @group || @user
+      redirect_to @group
     else
       flash[:error] = "Sorry, the company does not exist."
       render 'new'
@@ -39,8 +41,7 @@ class UsersController < ApplicationController
 
   def new_user_params
     params.require(:user).permit(
-      :first_name, :last_name, :email,
-      :password,:password_confirmation
+      :first_name, :last_name, :email, :password,:password_confirmation
     )
   end
 

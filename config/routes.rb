@@ -4,8 +4,7 @@ Rails.application.routes.draw do
   get '/register', to: 'users#new'
   get '/wordcloud', to: 'word_clouds#show'
   delete '/logout', to: 'sessions#destroy'
-
-  post '/documents', to: 'guests#create'  
+  post '/documents', to: 'guests#create'
 
   resources :users
   resources :keywords, only: [:create]

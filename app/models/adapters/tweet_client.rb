@@ -20,8 +20,5 @@ module Adapters
         ).tap { |current_tweet| current_tweet.save if current_tweet.valid? }
       end
     end
-
-
-
   end
 end
