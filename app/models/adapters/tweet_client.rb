@@ -8,7 +8,6 @@ module Adapters
 
     def find_tweets(query, language_code, result_type, tweet_count)
       tweets = connection.query(query, language_code, result_type).first(tweet_count)
-      binding.pry
       create_tweets(tweets)
     end
 
