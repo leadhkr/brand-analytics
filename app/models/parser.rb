@@ -35,19 +35,21 @@ class Parser
   end
 
   def self.find_matches(word_count, keyword_count)
-    # ['good', 'GOOD']
     word_count.keys.each_with_object({}) do |word, value_hash|
-      sliced_word = word.slice(0, word.length - 1) # slice off ! at end
-      if word == word.upcase && keyword_count[word.downcase] # check if capitalized
-        # find downcased keyword value and add multiplier for upcased word
-        value_hash[word] = word_count[word] * (keyword_count[word.downcase] * 2)
-      elsif keyword_count[sliced_word] && word[-1] == "!" # check word without exclamation point
-        # find keyword value and add multiplier for exclamation points
-        value_hash[word] = word_count[word] * (keyword_count[sliced_word] * 2)
-      elsif keyword_count[word]
-        value_hash[word] = word_count[word] * keyword_count[word]
-      end
+      value = get_word_value(word, keyword_count)
+      value_hash[word] = value unless value.nil?
     end
+  end
+
+  def self.get_word_value(word, keyword_count)
+    double_value = is_double_value(word, keyword_count) 
+    double_value ? double_value * 2 : keyword_count[word]
+  end
+
+  def self.is_double_value(word, keyword_count)
+    sliced_word = word.slice(0, word.length - 1) if word[-1] == "!"  # slice off ! at end
+    upcased_word = word.downcase if word == word.upcase # account for upcased words
+    keyword_count[sliced_word] || keyword_count[upcased_word] 
   end
 
   def self.join_tweets(tweets_array)

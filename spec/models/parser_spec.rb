@@ -42,8 +42,8 @@ describe Parser do
       sentiment = Parser.text_score(record)
       record2.text = "wtf. I was just joking"
       sentiment2 = Parser.text_score(record2)   
-      expect(sentiment.display_sentiment).to eq('positive')
-      expect(sentiment2.display_sentiment).to eq('negative')
+      expect(sentiment.display_sentiment).to eq('Positive')
+      expect(sentiment2.display_sentiment).to eq('Negative')
     end    
 
     it 'never exceeds sensible sentiment percentages' do

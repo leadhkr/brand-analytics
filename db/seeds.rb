@@ -2528,20 +2528,20 @@ end
 
 # CAMPUS DRAFT
 
-draft = [['Blackrock', '@blackrock.com'], ['New York Times', '@nytimes.com'],
-  ['StreetEasy', '@streeteasy.com'], ['Visual Image Display', '@visualimagedisplay.com'], ['IBM', '@ibm.com']
+draft = [['Culinary Agents', '@culinaryagents.com'], ['Ben Freda Consulting', '@benfredaconsulting.com'],
+  ['Liquid Talent', '@liquidtalent.com'], ['Verizon Innovation Program', '@verizon.com'], ['Market Bridge', '@marketbridge.com'],
 ]
 
-@blackrock = Group.create(name: draft[0][0], street_address: '40 East 52nd Street', city: 'New York', state: 'NY', zip_code: 10022, domain: draft[0][1])
-@nytimes = Group.create(name: draft[1][0], street_address: '620 Eighth Avenue', city: 'New York', state: 'NY', zip_code: 10018, domain: draft[1][1])
-@streeteasy = Group.create(name: draft[2][0], street_address: '130 5th Ave', city: 'New York', state: 'NY', zip_code: 10011, domain: draft[2][1])
-@vid = Group.create(name: draft[3][0], street_address: '150 Coolidge Ave.', city: 'Englewood', state: 'NJ', zip_code: 07631, domain: draft[3][1])
-@ibm = Group.create(name: draft[4][0], street_address: '1 New Orchard Road', city: 'Armonk', state: 'NY', zip_code: 10504, domain: draft[4][1])
+@culinaryagents = Group.create(name: draft[0][0], street_address: '27 East 28th Street', city: 'New York', state: 'NY', zip_code: 10016, domain: draft[0][1])
+@benfredaconsulting = Group.create(name: draft[1][0], street_address: '333 E. 14th Street #3H', city: 'New York', state: 'NY', zip_code: 10003, domain: draft[1][1])
+@liquidtalent = Group.create(name: draft[2][0], street_address: '11 Broadway', city: 'New York', state: 'NY', zip_code: 10001, domain: draft[2][1])
+@verizon = Group.create(name: draft[3][0], street_address: '140 West St.', city: 'New York', state: 'NY', zip_code: 10013, domain: draft[3][1])
+@marketbridge = Group.create(name: draft[4][0], street_address: '79 Madison Ave', city: 'New York', state: 'NY', zip_code: 10016, domain: draft[4][1])
 
-campus_draft_groups = [@blackrock, @nytimes, @streeteasy, @vid, @ibm]
+campus_draft_groups = [@culinaryagents, @benfredaconsulting, @liquidtalent, @verizon, @marketbridge]
 
 campus_draft_groups.each do |company|
-  user = User.create(first_name: 'Sagar', last_name: 'Patel', email: "sagar#{company.domain}", password: 'testpassword',password_confirmation: 'testpassword')
+  user = User.create(first_name: 'Leah', last_name: 'Einhorn', email: "leah#{company.domain}", password: '12345678',password_confirmation: '12345678')
   user.group = company
   user.save
 end
